@@ -1,10 +1,9 @@
-
-
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* cuts off overflowing width*/
   overflow-y: auto;  /*gives scroll bar when scrolling-switch to scroll to turn off*/
+  font-family: 'Inter', sans-serif;
 }
 
 .header{
@@ -14,7 +13,8 @@ body {
   justify-content: center; /* centers items horizontally */
   align-items: center;     /* centers items vertically */
   height: 20vh;           /* optional, to center items in full view height  or use px for pixels*/
-  background-image: url('bannerBackground.png'); /* Set the background image */
+  background-color: #477c0f;
+  /*background-image: url('mountains.jpeg'); /* Set the background image */
   background-size: 100% 100%; /* Image occupies 100% of height and width of flexbox */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   background-position: center; /* Center the image */
