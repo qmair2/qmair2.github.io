@@ -4,7 +4,7 @@ body {
   overflow-x: hidden; /* cuts off overflowing width*/
   overflow-y: auto;  /*gives scroll bar when scrolling-switch to scroll to turn off*/
   font-family: 'Inter', sans-serif;
-  background-color: #fbf3d7;
+  background-color: #fff8ea;
 }
 
 /*Header*/
@@ -16,7 +16,7 @@ body {
   justify-content: left; /* centers items horizontally */
   align-items: center;     /* centers items vertically */
   height: 10vh;           /* optional, to center items in full view height  or use px for pixels*/
-  background-color: #fbf3d7;
+  background-color: #f8eace;
   gap: 110vh;  /*gap between items in flexbox*/
   padding: 0 40px;
 }
@@ -52,77 +52,64 @@ body {
   width: 100%;
 }
 
-#homepageTitle{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%; 
-  height: 90vh;
-  text-align: center;
-  box-sizing: border-box; /* Ensures padding and border are included in width/height */
-  flex-direction: column; /* Stacks children vertically */
-  gap: 5px;
-  margin-bottom: 25px; /* bottom gap */
-  margin-top: 35px; /* top gap */ 
-}
-
-#name{
-  font-size: 60pt;
-  margin: 0;
-  padding: 0; /*remove padding and margin on child elements */
-  line-height: 1; /* Adjust line-height for text elements */
-}
-
-#subtitle{
-  color: #808187; 
-  font-size: 15pt;
-}
-
 /* About Info */
 
 .homepagePanel{
   display: flex;
   width: 90%; 
+  height: 100%;
   margin-left: 5%;  /* Add margin to the left */
   margin-right: 5%; /* Add margin to the right */
+  margin-bottom: 10%;
+  margin-top: 2%;
   justify-content: center;
   align-items: top;
-  padding: 0;
-  gap: 5px;
-}
-
-.image-fixed {
-  width: 420px; /* 3:2 pixels width to height ratio */ 
-  height: 600px;
+  padding: 30;
+  gap: 60px;
 }
 
 .panelText{
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 10;
+  align-items: top;
+  width: 60%;
+}
+
+.panelImage{
+  display: flex;
+  margin-top: 4%;
+  flex-direction: column;
+  padding: 10;
   align-items: top;
 }
 
-.bannerButton{
-  display: flex;
-  background-color: #fbf3d7; /* hex color code */
-  color:#010000;
-  height: 5vh;
-  width: 10vw;
-  align-items: center; /* centers items vertically */
-  justify-content: center; /* centers items horizontally */
+.image-fixed {
+  width: 360px; /* 3:2 pixels width to height ratio */ 
+  height: 480px;
 }
 
-.bannerText{
-  font-size: 15pt;
-  line-height: 1.5;
-  padding: 0;
-  width: 70%;
-  padding: 0;
+.bannerButton{
+  padding: 10px 20px;
+  background-color: #f8eace;   /* slightly different than background */
+  color: #452f04;
+  border: none;                /* removes border */
+  border-radius: 8px;          /* subtle rounding */
+  cursor: pointer;             /* pointer finger on hover */
+  transition: background-color 0.2s ease;
+  font-size: 16px;
+}
+
+.bannerButton:hover {
+  background-color: #fdd893;   /* slightly lighter on hover */
+}
+
+h3{
+  font-size: 30pt;
 }
 
 h4{
-  font-size: 30pt;
+  font-size: 22pt;
   padding: 0;
   white-space: nowrap;
   margin: 0;
@@ -133,6 +120,14 @@ h5{
 }
 
 #aboutMeText{
-  margin-top: -10px;
+  margin-top: 10px;
+  font-size: 15pt;
+  line-height: 1.5;
+  padding: 0;
+  padding: 0;
+  color: #452f04;
 }
 
+#aboutMeTitle{
+  margin-top: 10px;
+}
