@@ -4,38 +4,52 @@ body {
   overflow-x: hidden; /* cuts off overflowing width*/
   overflow-y: auto;  /*gives scroll bar when scrolling-switch to scroll to turn off*/
   font-family: 'Inter', sans-serif;
+  background-color: #fbf3d7;
 }
+
+/*Header*/
 
 .header{
   display: flex;
-  /*position: sticky; /*sticks when scrolling */
+  position: sticky; /*sticks when scrolling */
   top: 0; /* Sticks to the top of the viewport when scrolled */
+  justify-content: left; /* centers items horizontally */
+  align-items: center;     /* centers items vertically */
+  height: 10vh;           /* optional, to center items in full view height  or use px for pixels*/
+  background-color: #fbf3d7;
+  gap: 110vh;  /*gap between items in flexbox*/
+  padding: 0 40px;
+}
+
+.bannerButtons{
+  display: flex;
   justify-content: center; /* centers items horizontally */
   align-items: center;     /* centers items vertically */
-  height: 20vh;           /* optional, to center items in full view height  or use px for pixels*/
-  background-color: #477c0f;
-  /*background-image: url('mountains.jpeg'); /* Set the background image */
-  background-size: 100% 100%; /* Image occupies 100% of height and width of flexbox */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  background-position: center; /* Center the image */
-  gap: 20vh;  /*gap between items in flexbox*/
+  gap: 7vh;  /*gap between items in flexbox*/
+  padding: 0 40px;
 }
 
-.homepageButton{
-  display: flex;
-  height: 10vh;
-  width: 30vh;
-  align-items: center; /* centers items vertically */
-  justify-content: center; /* centers items horizontally */
-  background-color: #0f1a7c; /* hex color code */
-  border: 1px solid #0f1a7c; /* Border color */
-  border-radius: 15px; /* Rounds all four corners with a radius of 15px */
-  color: #fcfcfc; /*text color */
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4); /*light shadow-edit last number to change severity */
+.navLink{
+  text-decoration: none;   /* removes default underline */
+  color: #000;             /* or white if dark background */
+  font-weight: 500;
+  position: relative;      /* needed for underline animation */
+  gap: 40vh;  /*gap between items in flexbox*/
 }
 
-.homepageButton:hover {
-  cursor: pointer; /* Change cursor to hand on hover */
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;            /* space below text */
+  width: 0%;
+  height: 2px;
+  background-color: currentColor;  /* matches text color */
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
 }
 
 #homepageTitle{
@@ -43,7 +57,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%; 
-  height: 20vh;
+  height: 90vh;
   text-align: center;
   box-sizing: border-box; /* Ensures padding and border are included in width/height */
   flex-direction: column; /* Stacks children vertically */
@@ -57,7 +71,6 @@ body {
   margin: 0;
   padding: 0; /*remove padding and margin on child elements */
   line-height: 1; /* Adjust line-height for text elements */
-  text-transform: uppercase;
 }
 
 #subtitle{
@@ -65,7 +78,7 @@ body {
   font-size: 15pt;
 }
 
-/* homepage info panel */
+/* About Info */
 
 .homepagePanel{
   display: flex;
@@ -79,8 +92,8 @@ body {
 }
 
 .image-fixed {
-  width: 600px; /* 3:2 pixels width to height ratio */ 
-  height: 400px;
+  width: 420px; /* 3:2 pixels width to height ratio */ 
+  height: 600px;
 }
 
 .panelText{
@@ -92,18 +105,12 @@ body {
 
 .bannerButton{
   display: flex;
-  background-color: #1d2bb0; /* hex color code */
-  color:#fcfcfc;
-  border: 1px solid #0f1a7c; /* Border color */
-  border-radius: 5px; /* Rounds all four corners with a radius of 15px */
+  background-color: #fbf3d7; /* hex color code */
+  color:#010000;
   height: 5vh;
   width: 10vw;
   align-items: center; /* centers items vertically */
   justify-content: center; /* centers items horizontally */
-}
-
-.bannerButton:hover {
-  cursor: pointer; /* Change cursor to hand on hover */
 }
 
 .bannerText{
@@ -117,88 +124,15 @@ body {
 h4{
   font-size: 30pt;
   padding: 0;
+  white-space: nowrap;
+  margin: 0;
 }
 
-#whatWeOfferText{
+h5{
+  font-size: 18pt;
+}
+
+#aboutMeText{
   margin-top: -10px;
 }
 
-/* What Sets Us Apart Section */
-
-h3{
-  font-size: 40pt;
-}
-
-#whatSetsUsApart{
-  display: flex;
-  flex-direction: column;
-  margin: 5%;
-}
-
-#apartGrid{
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;     /* centers items vertically */
-  gap: 10%;
-}
-
-#apartBox{
-  display: flex;
-}
-
-.apartGridColumn{
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* centers items horizontally */
-  align-items: center;     /* centers items vertically */
-}
-
-.iconImage{
-  width: 50px;
-  height: 50px;
-  padding: 0;
-}
-
-.apartBodyText{
-  font-size: 14pt;
-  width: 75%;
-  color: #4252cf;
-  margin-top: -18px;
-  margin-bottom: 20%;
-}
-
-.apartSubheading{
-  font-size: 20pt;
-  color: #3c3c41;
-  margin-top: -2px;
-
-}
-
-/* bottom banner */
-
-.baseBanner{
-  width: 100%;
-  height: 40vh;
-  background-color: #6ac6ffa2;
-  display: flex;
-  justify-content: center; /* centers items horizontally */
-  align-items: center;     /* centers items vertically */
-  flex-direction: column; /* Stacks children vertically */
-}
-
-.baseBannerHeader{
-  font-size: 50pt;
-}
-
-.baseBannerButton{
-  display: flex;
-  background-color: #1d2bb0; /* hex color code */
-  color:#fcfcfc;
-  border: 1px solid #0f1a7c; /* Border color */
-  border-radius: 5px; /* Rounds all four corners with a radius of 15px */
-  height: 5vh;
-  width: 10vw;
-  align-items: center; /* centers items vertically */
-  justify-content: center; /* centers items horizontally */
-  margin-top: -30%;
-}
