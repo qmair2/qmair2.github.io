@@ -106,6 +106,7 @@ body {
 
 h3{
   font-size: 30pt;
+  color: #3f2b02;
 }
 
 h4{
@@ -129,5 +130,40 @@ h5{
 }
 
 #aboutMeTitle{
-  margin-top: 10px;
+  margin-top: 5px;
+  color: #3f2b02;
+}
+
+
+/* ProjectPage Style */
+
+.PbuttonPanel{
+  display: flex;
+  flex-direction: column;
+}
+
+.pButton {
+  display: block;                 /* makes buttons stack nicely */
+  width: 100%;                   /* full width inside panel */
+  text-align: left;              /* text aligned like your site */
+
+  padding: 12px 18px;
+  margin-bottom: 10px;
+
+  background-color: #f3e7cf;     /* soft beige (slightly lighter than bg) */
+  color: #3b2a14;                /* dark brown text */
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pButton:hover {
+  background-color: #e6d6b5;     /* slightly darker on hover */
+  transform: translateY(-2px);   /* subtle lift */
 }
