@@ -27,7 +27,8 @@
             <p class="eyebrow">FPGA · Verilog · Computer Architecture</p>
             <h1>Procedural Maze Game on Custom Processor</h1>
             <p class="subtitle">
-              A dungeon-crawler maze game running on a custom 32-bit pipelined processor implemented on an FPGA.
+              A dungeon-crawler maze game designed with a partner running on a custom 32-bit 
+              pipelined processor implemented on an FPGA.
             </p>
     
             <div class="tags">
@@ -35,21 +36,51 @@
               <span>MIPS Assembly</span>
               <span>VGA</span>
               <span>FPGA</span>
+              <span>Vivado</span>
+              <span>GTK Wave</span>
             </div>
           </div>
     
-          <img src="images/maze-game.png" alt="Maze game running on FPGA" class="hero-image" />
+          <img src="mazeTile.ong.png" alt="Maze game running on FPGA" class="hero-image" />
         </section>
     
         <section class="section">
           <h2>Abstract</h2>
           <p>
-            This project involved designing and implementing a custom 32-bit pipelined processor on an FPGA,
-            then using it to run a real-time procedural maze game displayed over VGA.
+            This project involved designing and implementing a custom 32-bit pipelined processor on an FPGA to
+            support an 8x8 tile maze game viewed one tile at a time that randomly generated new maze paths and 
+            supported a joystick for movement. At the start of the game, users see a sprite appear in the 
+            middle of a tile, and can navigate the sprite off the edges of each tile into neighboring tiles to follow 
+            along the maze path. At the end of the maze, a treasure chest appears in the middle of a dead end tile, and 
+            an end screen appears once users navigate the sprite over the chest. From this end screen, users can 
+            push a button to return to the start screen and can then replay the maze with a new map. While navigating 
+            the maze, the player's sprite is animated to match the direction the sprite is traveling and the sprite's 
+            movement is limited to the onscreen pathway.
           </p>
           <p>
-            The system combined processor design, memory-mapped I/O, graphics output, assembly programming,
-            and hardware debugging into a complete working platform.
+            Designed initially in Photoshop, each tile features a stone pathway against a dark green background. 
+            The widths and dimensions of each pathway are standardized and line up with the pathways of any other 
+            given tile. The tile data is encoded in a five bit message in a designated register detailing which 
+            directions-up, down, left, or right-have an exit and whether that tile is an end cell, or maze destination. 
+            If a tile is denoted as an “end cell,” a treasure chest appears in the middle of the cell.
+          </p>
+          <p>
+            After using a start button signal to latch a random seed (16-bit TFF Counter) based on the timing of the 
+            user input, the first section of our code procedurally generates a random maze path and stores each tile's 
+            data in memory. This code ensures every tile within the 8x8 maze contains valid exit information and is 
+            connected to the rest of the maze, that the end of the maze is the furthest it can be from the start of the 
+            maze, and that the maze is perfect (contains no loops). 
+          </p>
+          <p>
+            After the maze is generated, players spawn in the middle of the start tile, and can use the joystick 
+            to navigate the maze one tile at a time. Adaptive boundaries prevent users from exiting the maze path, 
+            allowing movement in each direction only when a valid exit exists in the corresponding direction. 
+          </p>
+          <p>
+            This game is viewed on a VGA screen housed in an acrylic arcade cabinet which supports the button and 
+            joystick as user input. Inside the cabinet, an FPGA uploaded with our hardware design and memory is 
+            connected to a custom circuit of pull-down networks to interpret the input signals. On the outside of 
+            the cabinet, users see a polished black arcade cabinet with stickers and labels to improve aesthetic appeal. 
           </p>
         </section>
     
@@ -59,11 +90,11 @@
           <div class="results-grid">
             <div class="result-card">
               <h3>5-Stage</h3>
-              <p>Pipeline</p>
+              <p>Pipeline with hazard detection</p>
             </div>
             <div class="result-card">
               <h3>32-bit</h3>
-              <p>Processor</p>
+              <p>Pipelined processor</p>
             </div>
             <div class="result-card">
               <h3>VGA</h3>
@@ -95,40 +126,126 @@
         </section>
     
         <section class="section">
-          <h2>Technical Deep Dive</h2>
-    
-          <div class="card-grid">
-            <article class="info-card">
-              <h3>Processor Design</h3>
-              <p>
-                Designed the datapath, control logic, pipeline registers, and forwarding unit in Verilog.
-              </p>
-            </article>
-    
-            <article class="info-card">
-              <h3>Verification</h3>
-              <p>
-                Tested individual modules with simulation and debugged timing behavior using waveform analysis.
-              </p>
-            </article>
-    
-            <article class="info-card">
-              <h3>Graphics</h3>
-              <p>
-                Built a VGA controller and memory-mapped display system for real-time game rendering.
-              </p>
-            </article>
-          </div>
-        </section>
+            <h2>Technical Deep Dive</h2>
+          
+            <div class="deep-dive">
+          
+              <!-- BLOCK 1 -->
+          
+              <div class="deep-dive-block">
+          
+                <div class="deep-dive-text">
+                  <h3>Processor Pipeline Design</h3>
+          
+                  <p>
+                    The processor was implemented as a five-stage pipelined architecture
+                    consisting of fetch, decode, execute, memory, and writeback stages.
+                    Pipeline registers separated each stage to improve throughput and
+                    enable simultaneous instruction execution.
+                  </p>
+          
+                  <p>
+                    To handle data hazards, I implemented forwarding logic and stall
+                    detection hardware. Branch hazards were resolved through pipeline
+                    flushing and control logic inserted during decode.
+                  </p>
+          
+                  <div class="highlight-box">
+                    <h4>Key Features</h4>
+                    <p>
+                      Hazard detection, forwarding, branch flushing,
+                      register file bypassing, and memory-mapped I/O.
+                    </p>
+                  </div>
+                </div>
+          
+                <div>
+                  <img
+                    src="images/pipeline-diagram.png"
+                    alt="Pipeline diagram"
+                    class="deep-dive-diagram"
+                  />
+          
+                  <p class="diagram-caption">
+                    Five-stage processor pipeline showing instruction flow,
+                    forwarding paths, and hazard handling.
+                  </p>
+                </div>
+          
+              </div>
+          
+              <!-- BLOCK 2 -->
+          
+              <div class="deep-dive-block reverse">
+          
+                <div>
+                  <img
+                    src="images/vga-controller.png"
+                    alt="VGA controller diagram"
+                    class="deep-dive-diagram"
+                  />
+          
+                  <p class="diagram-caption">
+                    VGA subsystem responsible for timing generation,
+                    frame synchronization, and pixel rendering.
+                  </p>
+                </div>
+          
+                <div class="deep-dive-text">
+                  <h3>Graphics and VGA Output</h3>
+          
+                  <p>
+                    A custom VGA controller generated synchronization signals and pixel
+                    coordinates for a 640×480 display. The game renderer interfaced with
+                    memory-mapped graphics hardware to draw tiles and player movement in
+                    real time.
+                  </p>
+          
+                  <p>
+                    Rendering performance was optimized by minimizing memory accesses and
+                    simplifying sprite logic to fit FPGA timing and resource constraints.
+                  </p>
+          
+                  <ul>
+                    <li>640×480 VGA output</li>
+                    <li>Real-time tile rendering</li>
+                    <li>Memory-mapped graphics interface</li>
+                    <li>Hardware timing synchronization</li>
+                  </ul>
+                </div>
+          
+              </div>
+          
+            </div>
+          </section>
     
         <section class="section">
-          <h2>Photo Gallery</h2>
-    
-          <div class="gallery">
-            <img src="images/photo1.jpg" alt="FPGA board setup" />
-            <img src="images/photo2.jpg" alt="VGA output" />
-            <img src="images/photo3.jpg" alt="Debugging setup" />
-          </div>
+        <h2>Photo Gallery</h2>
+
+        <div class="gallery">
+
+            <figure class="gallery-item">
+            <img src="images/fpga-board.jpg" alt="FPGA board setup" />
+            <figcaption>
+                Final FPGA setup running the processor and VGA game output.
+            </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+            <img src="images/waveform.png" alt="Simulation waveform" />
+            <figcaption>
+                ModelSim waveform used to debug pipeline hazards and forwarding logic.
+            </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+            <img src="images/vga-output.jpg" alt="VGA display output" />
+            <figcaption>
+                Real-time VGA rendering of the procedural maze game.
+            </figcaption>
+            </figure>
+
+        </div>
         </section>
     
         <section class="section">
