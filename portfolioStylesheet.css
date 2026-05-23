@@ -217,7 +217,7 @@ h5{
 
 
 
-/* Project Page Styling */
+/* Single Project Page Styling */
 
 
 * {
@@ -267,6 +267,10 @@ main {
   gap: 64px;
   align-items: center;
   margin-bottom: 100px;
+}
+
+.projectAbstractText{
+  text-align: justify;
 }
 
 .eyebrow {
@@ -390,7 +394,8 @@ h1 {
 
 .gallery-item {
   margin: 0;
-  background: #f4e3be;
+  background: #fff8ea;
+  /* background: #f4e3be; */
   border-radius: 22px;
   overflow: hidden;
 
@@ -404,7 +409,7 @@ h1 {
 .gallery-item img {
   width: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 

@@ -46,7 +46,7 @@
     
         <section class="section">
           <h2>Abstract</h2>
-          <p>
+          <p class="projectAbstractText">
             This project involved designing and implementing a custom 32-bit pipelined processor on an FPGA to
             support an 8x8 tile maze game viewed one tile at a time that randomly generated new maze paths and 
             supported a joystick for movement. At the start of the game, users see a sprite appear in the 
@@ -57,26 +57,26 @@
             the maze, the player's sprite is animated to match the direction the sprite is traveling and the sprite's 
             movement is limited to the onscreen pathway.
           </p>
-          <p>
+          <p class="projectAbstractText">
             Designed initially in Photoshop, each tile features a stone pathway against a dark green background. 
             The widths and dimensions of each pathway are standardized and line up with the pathways of any other 
             given tile. The tile data is encoded in a five bit message in a designated register detailing which 
             directions-up, down, left, or right-have an exit and whether that tile is an end cell, or maze destination. 
             If a tile is denoted as an “end cell,” a treasure chest appears in the middle of the cell.
           </p>
-          <p>
-            After using a start button signal to latch a random seed (16-bit TFF Counter) based on the timing of the 
+          <p class="projectAbstractText">
+            After using a start button signal to latch a random seed (16-bit TFF counter) based on the timing of the 
             user input, the first section of our code procedurally generates a random maze path and stores each tile's 
             data in memory. This code ensures every tile within the 8x8 maze contains valid exit information and is 
             connected to the rest of the maze, that the end of the maze is the furthest it can be from the start of the 
             maze, and that the maze is perfect (contains no loops). 
           </p>
-          <p>
+          <p class="projectAbstractText">
             After the maze is generated, players spawn in the middle of the start tile, and can use the joystick 
             to navigate the maze one tile at a time. Adaptive boundaries prevent users from exiting the maze path, 
             allowing movement in each direction only when a valid exit exists in the corresponding direction. 
           </p>
-          <p>
+          <p class="projectAbstractText">
             This game is viewed on a VGA screen housed in an acrylic arcade cabinet which supports the button and 
             joystick as user input. Inside the cabinet, an FPGA uploaded with our hardware design and memory is 
             connected to a custom circuit of pull-down networks to interpret the input signals. On the outside of 
@@ -90,11 +90,11 @@
           <div class="results-grid">
             <div class="result-card">
               <h3>5-Stage</h3>
-              <p>Pipeline with hazard detection</p>
+              <p>Pipeline</p>
             </div>
             <div class="result-card">
               <h3>32-bit</h3>
-              <p>Pipelined processor</p>
+              <p>Processor</p>
             </div>
             <div class="result-card">
               <h3>VGA</h3>
@@ -225,9 +225,9 @@
         <div class="gallery">
 
             <figure class="gallery-item">
-            <img src="images/fpga-board.jpg" alt="FPGA board setup" />
+            <img src="mazePic.png" alt="Full VGA setup and display cabinet" />
             <figcaption>
-                Final FPGA setup running the processor and VGA game output.
+                Final FPGA and VGA setup in acrylic cabinet after winning the game.
             </figcaption>
             </figure>
 
