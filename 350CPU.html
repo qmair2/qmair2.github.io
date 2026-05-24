@@ -85,31 +85,31 @@
         </section>
     
         <section class="section">
-          <h2>Results</h2>
+          <h2>Processor Features</h2>
     
           <div class="results-grid">
             <div class="result-card">
               <h3>5-Stage</h3>
-              <p>Pipeline</p>
+              <p>Pipeline with hazard detection and bypassing for structural, data, and control hazards</p>
             </div>
             <div class="result-card">
-              <h3>32-bit</h3>
-              <p>Processor</p>
+              <h3>Custom ISA</h3>
+              <p>Supports all standard ALU operations and custom instructions such as modulus division</p>
             </div>
             <div class="result-card">
-              <h3>VGA</h3>
-              <p>Graphics Output</p>
+              <h3>ALU</h3>
+              <p>Includes carry-lookahead adder, modified booth multiplication, non-restoring division</p>
             </div>
             <div class="result-card">
-              <h3>FPGA</h3>
-              <p>Hardware Deployment</p>
+              <h3>25 MHz</h3>
+              <p>Demonstrated clock speed</p>
             </div>
           </div>
         </section>
     
-        <section class="section split">
+        <section class="ThreeFiftyresultsSectionSplit">  <!-- class was originally hero-img-->
           <div>
-            <h2>System Architecture</h2>
+            <h2>Results</h2>
             <p>
               The system consists of a custom CPU, instruction memory, data memory, VGA controller,
               input handling, and game logic written in assembly.
@@ -122,7 +122,7 @@
             </ul>
           </div>
     
-          <img src="images/system-diagram.png" alt="System architecture diagram" class="content-image" />
+          <img src="mazePic.png" alt="Full maze arcade cabinet" class="results-image" />
         </section>
     
         <section class="section">
@@ -218,7 +218,11 @@
           
             </div>
           </section>
-    
+
+          
+          <!-- PHOTO GALLERY -->
+
+
         <section class="section">
         <h2>Photo Gallery</h2>
 
@@ -232,9 +236,9 @@
             </figure>
 
             <figure class="gallery-item">
-            <img src="images/waveform.png" alt="Simulation waveform" />
+            <img src="GTKwaveSS.png" alt="Simulation waveform" />
             <figcaption>
-                ModelSim waveform used to debug pipeline hazards and forwarding logic.
+                GTKWave waveform used to debug pipeline hazards and bypassing logic.
             </figcaption>
             </figure>
 
