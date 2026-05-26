@@ -117,14 +117,19 @@
               number generating XOR shifting function to find the longest path between the start and end tiles. Players use the joystick
               to navigate the maze by existing one tile into another tile where a valid exit/entry point exists. Custom map backgrounds
               are displayed to match the corresponding tiles for players to see where valid exits exist while contributing to the 
-              dungeon-crawler theme. 
+              dungeon-crawler theme. When a player arrives at an end tile, there are no valid exists except for the entry point, and a 
+              tresure chest appears in the middle of the tile. By navigating the sprite over the treasure chest, players win the game 
+              and the VGA transitions to the next game state-the end screen-where players can choose to play the maze again with a 
+              different path by pushing the button on the arcade cabinet.
             </p>
+            <!-- BULLET POINTS IN RESULTS
             <ul>
               <li>Five-stage instruction pipeline</li>
               <li>Hazard detection and forwarding</li>
               <li>Memory-mapped graphics interface</li>
               <li>VGA timing and pixel generation</li>
             </ul>
+            -->
           </div>
     
           <img src="mazePic.png" alt="Full maze arcade cabinet" class="results-image" />
@@ -140,87 +145,167 @@
               <div class="deep-dive-block">
           
                 <div class="deep-dive-text">
-                  <h3>Processor Pipeline Design</h3>
+                  <h3>Assembly Program</h3>
+
+                  <figure class="wrapped-figure">
+                    <img src="movementRightMIPS.png" alt="Assembly code screenshot" />
+                    <figcaption>
+                      MIPS code for sprite movement right.
+                    </figcaption>
+                  </figure>
           
                   <p>
-                    The processor was implemented as a five-stage pipelined architecture
-                    consisting of fetch, decode, execute, memory, and writeback stages.
-                    Pipeline registers separated each stage to improve throughput and
-                    enable simultaneous instruction execution.
+                    Using MIPS-like assembly instructions, we program each game state and the respective conditions to progress 
+                    between them, and a Python assembler is used to convert this to a binary memory file for our instruction memory. 
+                    The maze generation takes place in the second game state, after the start screen. We used a DFS-backtrace algorithm 
+                    paired with a PRNG xor-shifting function which carves the path through each tile at random. After a random start 
+                    cell is selected, its index gets pushed to a stack, and the algorithm randomly chooses any unvisited neighbor 
+                    to carve a path to. The path is carved by changing the respective directional bit in each tile's data address 
+                    in RAM. This neighbor gets pushed to the stack, and the process continues until no neighbors are available to 
+                    visit for a given tile. This tile then gets popped from the stack and the previous tile is checked for unvisited 
+                    neighbors. The program repeats until it is empty, but keeps track of the highest stack position and that deepest 
+                    cell's “end cell” bit is changed to a 1.
                   </p>
-          
                   <p>
-                    To handle data hazards, I implemented forwarding logic and stall
-                    detection hardware. Branch hazards were resolved through pipeline
-                    flushing and control logic inserted during decode.
+                    The next portion of the program is responsible for handling movement and boundaries. While the user is actively 
+                    playing the game, game state 3, a loop is responsible for interpreting joystick input. Using mask values 1, 2, 4, 
+                    and 8 the loop compares the joystick register to each mask with an AND gate to determine which direction the 
+                    joystick is being pointed. This loop includes a “nop” loop that can be adjusted to change the frequency at which 
+                    joystick conditions are checked. Because the joystick register stores joystick input data in the bottom four bits 
+                    in order, the 1 mask reveals if the up direction is pressed, the 2 mask reveals if the right direction is pressed, 
+                    the 4 mask reveals if the down direction is pressed, and the 8 mask reveals if the left direction is pressed. If 
+                    none of these AND gates retain a valid movement signal in any direction, the loop is repeated until a signal is 
+                    detected. If a direction is pressed, the MIPs jumps to the corresponding direction. Here, the internal x and y 
+                    boundaries for each direction are calculated to determine if movement in that direction is permitted. At this step, 
+                    another AND gate uses another decimal mask to check the corresponding value of the tile register which encodes 
+                    whether or not there is a valid exit in the intended direction, and stores this value in register 12.
+                    If an exit upwards is valid and the sprite is in the middle of the tile, the assembly jumps to 
+                    unconstrained upwards movement. If there is not a valid exit in the up direction, the assembly jumps to the same 
+                    constrained movement applied to the other two vertical thirds. This logic is mimicked for the other three directions, 
+                    with right and left delineating the screen into first vertical thirds and second horizontal, opposite that of up and 
+                    down handling. 
+                  </p>
+                  <p>
+                    Immediately before updating the position register after a valid movement has been permitted in any given direction, 
+                    the assembly code checks if the sprite is at the border of the screen. If the sprite is at the tile border, 
+                    instead of updating the position register by 1 the code loads the corresponding tile address from memory for the 
+                    given border, and updates the sprite's position to opposite the edge it just encountered. For example, if a user 
+                    moved upwards and encountered the top boundary the program would load the tile data for the tile above the one the 
+                    user is currently in, and then set the sprite's y-direction position to the bottom of the screen. This process is 
+                    mirrored in all four directions, allowing users to move from tile to tile by reaching the border of the tile they 
+                    are presently in. 
+                  </p>
+                  <p>
+                    The joystick loop also actively checks whether or not the tile being displayed is an “end” tile, or that the user 
+                    has completed the maze. If a tile is an end tile, a treasure chest appears in the center of the screen. The joystick 
+                    input loop uses a mask value of 16 to isolate the fifth bit of the tile register, where end tile data is encoded, 
+                    and if this bit is valid checks the sprite's position. If the sprite is the center of an end tile, it means the user 
+                    has moved to the chest and won the game. When this is detected, the game state is updated to 4, displaying a screen 
+                    stating “you win” and offering the user the option to play again by pushing the start button. 
                   </p>
           
                   <div class="highlight-box">
                     <h4>Key Features</h4>
-                    <p>
-                      Hazard detection, forwarding, branch flushing,
-                      register file bypassing, and memory-mapped I/O.
-                    </p>
+                    <ul class="feature-list">
+                      <li>DFS-backtrace algorithm</li>
+                      <li>Register-mapped I/O</li>
+                      <li>NOP loop for sprite pacing</li>
+                      <li>Continuous boundary checking</li>
+                    </ul>
                   </div>
                 </div>
           
-                <div>
-                  <img
-                    src="images/pipeline-diagram.png"
-                    alt="Pipeline diagram"
-                    class="deep-dive-diagram"
-                  />
-          
-                  <p class="diagram-caption">
-                    Five-stage processor pipeline showing instruction flow,
-                    forwarding paths, and hazard handling.
-                  </p>
-                </div>
           
               </div>
           
               <!-- BLOCK 2 -->
           
               <div class="deep-dive-block reverse">
-          
-                <div>
-                  <img
-                    src="images/vga-controller.png"
-                    alt="VGA controller diagram"
-                    class="deep-dive-diagram"
-                  />
-          
-                  <p class="diagram-caption">
-                    VGA subsystem responsible for timing generation,
-                    frame synchronization, and pixel rendering.
-                  </p>
-                </div>
+        
           
                 <div class="deep-dive-text">
-                  <h3>Graphics and VGA Output</h3>
+                  <h3>Inputs and Outputs</h3>
+
+                  <figure class="wrapped-figure left">
+                    <img src="350MazeIODiagram.png" alt="I/O circuit diagram" />
+                    <figcaption>
+                      Circuit diagram for pull-down input circuitry.
+                    </figcaption>
+                  </figure>
           
                   <p>
-                    A custom VGA controller generated synchronization signals and pixel
-                    coordinates for a 640×480 display. The game renderer interfaced with
-                    memory-mapped graphics hardware to draw tiles and player movement in
-                    real time.
+                    <strong>Inputs:</strong> Players progress game state with a button, and move the sprite with a joystick. Both of 
+                    these input devices are connected to the FPGA through a pull-down network to ensure active-low behavior. The button 
+                    and limit switches inside the joystick are each connected within their individual branches in series between a 10 kΩ 
+                    resistor and a constant 3.3V supplied by the FPGA. On the low side of each of these switches, the corresponding FPGA 
+                    input/output pin connects each switch to the FPGA as shown in figure 3. When a switch is toggled, a current through 
+                    the corresponding branch is created sending a logical high signal to the FPGA. Our hardware uses register-mapped I/O: 
+                    register 20 stores the button's state in its least significant bit, while register 27 stores the data for each 
+                    direction in the four least significant bits as up, right, down, and left respectively. These registers are then 
+                    handled in assembly to produce the desired output.
                   </p>
           
                   <p>
-                    Rendering performance was optimized by minimizing memory accesses and
-                    simplifying sprite logic to fit FPGA timing and resource constraints.
+                    <strong>Outputs:</strong> The only output for this project was a VGA display. The project's wrapper module 
+                    connects our VGA controller to important register outputs, making our project register mapped I/O. A few examples 
+                    of these registers are the joystick signals, the X and Y coordinates of our sprite, and the current game state. 
+                    Each of these plays a role in what is displayed on the VGA. A tree of hardware logic determines which background 
+                    should be displayed (based on game state and current tile data) and where the sprite is positioned and the direction 
+                    it faces (based on joystick and coordinate data). The project wrapper's I/O header contains the clock and reset 
+                    inputs for the hardware as a whole, the button and 4-bit joystick input which connect directly to register 
+                    next-states, and the necessary signals for our VGA display as outputs. These include the vertical and horizontal 
+                    edge sync signals, and a 4-bit color signal for each RGB channel.
                   </p>
+
           
-                  <ul>
-                    <li>640×480 VGA output</li>
-                    <li>Real-time tile rendering</li>
-                    <li>Memory-mapped graphics interface</li>
-                    <li>Hardware timing synchronization</li>
-                  </ul>
+                  <div class="highlight-box">
+                    <h4>Key Features</h4>
+                    <ul class="feature-list">
+                      <li>Pull-down input circuitry</li>
+                      <li>Central FPGA power source</li>
+                      <li>Register mapping through I/O header</li>
+                    </ul>
+                  </div>
                 </div>
+
           
               </div>
+
+              <!-- BLOCK 3 -->
           
+              <div class="deep-dive-block">
+          
+                <div class="deep-dive-text">
+                  <h3>Art and Visuals</h3>
+
+                  <figure class="wrapped-figure art">
+                    <img src="350CPUArt.png" alt="Sample chest and tile blocks" />
+                    <figcaption>
+                      Chest and tile blocks made in Photoshop.
+                    </figcaption>
+                  </figure>
+          
+                  <p>
+                    The background and sprite were created in Photoshop as pixel art. The background art is made up of a set of 
+                    tiles that represent the floor, walls, and trim. They could be placed to configure openings in each direction. 
+                    There are 16 generic cell backgrounds, with an additional 4 end cell backgrounds and 3 message displays to direct 
+                    the player. The sprite was designed with the 4 movement directions in mind. There are 4 art variations that 
+                    indicate which direction the player is moving, giving the game a more dynamic feel.
+                  </p>
+          
+                  <div class="highlight-box">
+                    <h4>Key Features</h4>
+                    <ul class="feature-list">
+                      <li>Made in Photoshop</li>
+                      <li>Boundaries align between tiles</li>
+                      <li>Different sprite orientations for each direction</li>
+                    </ul>
+                  </div>
+                </div>
+          
+          
+              </div>
+
             </div>
           </section>
 
@@ -248,17 +333,10 @@
             </figure>
 
             <figure class="gallery-item">
-            <img src="350MazeIODiagram.png" alt="Input/Output circuit diagram" />
+            <img src="350SpriteRight.png" alt="Sample sprite image" />
             <figcaption>
-                Circuit diagram for inputs and outputs.
+                Art for sprite moving right.
             </figcaption>
-            </figure>
-
-            <figure class="gallery-item">
-                <img src="movementRightMIPS.png" alt="MIPS code for movement right" />
-                <figcaption>
-                    MIPS code for sprite movement right.
-                </figcaption>
             </figure>
 
         </div>
