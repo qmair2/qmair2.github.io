@@ -32,11 +32,9 @@
     
             <div class="tags">
               <span>MATLAB</span>
-              <span>Fast Fourier Transform Analysis</span>
+              <span>Fast Fourier Transform</span>
               <span>Frequency Domain Analysis</span>
               <span>Data Parsing</span>
-              <span>LaTeX</span>
-              <span>Software Verification</span>
             </div>
           </div>
     
@@ -175,7 +173,7 @@
                   <p class="projectAbstractText">
                     While the process and procedure of this note recognition program works well for smaller audio files, there are 
                     substantial MATLAB and memory issues precluding it from being as effective with larger data sets. With properly 
-                    identified parsing thresholds, larger audio f iles necessitate creating significantly more note windows. The figure 
+                    identified parsing thresholds, larger audio files necessitate creating significantly more note windows. The figure 
                     below illustrates the result of the note parsing function for ”Jingle Bell Rock,” which is just shy of three minutes 
                     long. This file requires over 200 note windows, and unsurprisingly leads to indexing and memory issues particularly 
                     with the recursive parts of the program.
@@ -203,12 +201,12 @@
           <h2>Conclusion</h2>
           <p class="projectAbstractText">
             Using MATLAB's built in fast Fourier transform function for discrete signals in conjunction with a note parsing 
-            function, my program was able to very effectively identify individual 5music notes in a small audio file. Despite 
+            function, my program was able to very effectively identify individual music notes in a small audio file. Despite 
             initially appearing like a straightforward process, this project was complicated by complex, changing data types and 
             structures resulting from the Fourier transform and repeated loop operations. The most difficult parts of working through 
             this project came from troubleshooting algorithmic issues with frequency conversions and working with arrays and vectors 
             to store note windows at various stages of processing. For example, much of the debugging stage of the project was 
-            dedicating to f ixing array index errors resulting from Hz to index conversion immediately after the fft process, and 
+            dedicating to fixing array index errors resulting from Hz to index conversion immediately after the FFT process, and 
             subsequent edge case issues raised by looping.
           </p>
           <p class="projectAbstractText">
@@ -218,11 +216,6 @@
             which the maximum amplitude of the input file deviates as an outlier and evaluating thresholds accordingly I could ensure 
             that the note windows are better correlated to notes in the input file. These changes would also aid the program to better 
             handle larger data sets and reduce overall runtime.
-          </p>
-          <p class="projectAbstractText">
-            Prior to this project, I had little understanding of audio signal processing in MATLAB. After working through and 
-            researching this program, I now feel well equipped to face new problems or explain concepts related to discrete Fourier 
-            transforms and their applications for audio processing in MATLAB.
           </p>
         </section>
     
