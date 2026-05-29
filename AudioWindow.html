@@ -19,12 +19,405 @@
             <a href="contactlinks.html" class="navLink">Contact</a>    
         </div>
     </div>
-    <div id="homepageTitle">
-        <H1 id="name"><strong>Audio Windowing Pade</strong></H1>
-        <p id="subtitle">subtitle here</p>
-    </div>
+    
+    <main>
+
+        <section class="hero">
+          <div class="hero-text">
+            <p class="eyebrow">Signal Processing · Algorithm Development</p>
+            <h1>Audio Note Recognition System</h1>
+            <p class="subtitle">
+              A MATLAB system to identify and label individual notes in an input audio file.
+            </p>
+    
+            <div class="tags">
+              <span>MATLAB</span>
+              <span>Fast Fourier Transform Analysis</span>
+              <span>Frequency Domain Analysis</span>
+              <span>Data Parsing</span>
+              <span>LaTeX</span>
+              <span>Software Verification</span>
+            </div>
+          </div>
+    
+          <img src="AudioWindow.png" alt="MATLAB windowing output graph" class="hero-image" />
+        </section>
+    
+        <section class="section">
+          <h2>Abstract</h2>
+          <p class="projectAbstractText">
+            In this project, I intended to design a system to identify individual music notes in a larger audio file. 
+            My system parses an input audio file into individual notes and then analyzes the frequency content of those 
+            notes to identify the dominant frequency. This dominant frequency is then used to identify the pitch and 
+            octave of the note and return those values for each note. I tested this system on audio files of varying 
+            types and lengths, with varying success. With smaller audio inputs, this system correctly identified the 
+            pitch and octave of every note window.
+          </p>
+          <p class="projectAbstractText">
+            To identify the music notes corresponding to each frequency in a larger audio file, I created a MATLAB program 
+            to: read a file, parse the file into individual notes, convert those notes to the frequency domain, and use the 
+            dominant frequency to identify a corresponding music note. Throughout the program, I added graphing functions 
+            to troubleshoot individual functions and better visualize the audio recognition process. This code uses the 
+            audioread command to get an array of samples at a standard sample rate, then uses these samples in the following process:
+            <ul>
+                <li>Graph original audio file using the MATLAB plot function.</li>
+                <li>Parse file into individual notes: A pointer is used to iterate through the length of the audio file, 
+                    flagging sections that are above an upper threshold as a note and below a lower threshold as a gap between 
+                    notes. These thresholds are based on a percentage of the maximum amplitude and arbitrarily decided depending 
+                    on the modal amplitude and tempo of the song. The values of the flagged sections are then linked to identify 
+                    midpoints with which to divide the audio file, creating distinct notes.</li>
+                <li>Graph windowed audio file for comparison to original.</li>
+                <li>Get frequency content for each windowed section: A pointer is used to iterate through every window created in 
+                    the second step. Using the MATLAB fft function, the discrete Fourier transform is calculated for the window at 
+                    the pointer allowing the window's frequency content to be displayed and analyzed. In this same function, the 
+                    maximum frequency is identified and its corresponding index on the frequency axis is stored with a narrow range 
+                    on either side as allowed by a band-pass filter. The frequency content of the window is then displayed in a subplot 
+                    with the original audio file to evaluate the function's performance and draw comparisons between each note's time 
+                    and frequency representations.</li>
+                <li>Filter out inaudible frequencies with another band-pass filter.</li>
+                <li>Identify the octave of each note window. Here, a recursive function checks if the input frequency is between 
+                    261.63 Hz and 523.25 Hz; the bounds for the middle C octave. If the input frequency is outside these bounds, the 
+                    function is recursively called on a scaled version of the frequency with a flag tracking the amount of recursions. 
+                    This flag corresponds to the number of octaves below or above the middle C octave depending on the direction of 
+                    the frequency scaling.</li>
+                <li>Assign note value: using a table of note frequencies and corresponding letters and octaves, a series of ”if” 
+                    statements is used to identify which note an octave-adjusted frequency corresponds to.</li>
+                <li>Using a wrapper function, the note value and octave of each window are displayed in the command window.</li>
+
+              </ul>
+          </p>
+          <p class="projectAbstractText">
+            A basic overview of the process is outlined in the block diagram below:
+            <figure class="audioProcessFigure">
+                <img src="audioWProcess.png" alt="Assembly code screenshot" />
+                <figcaption>
+                  Algorithm Overview
+                </figcaption>
+              </figure>
+          </p>          
+        </section>
+    
+        <section class="section">
+          <h2>Processor Features</h2>
+    
+          <div class="results-grid">
+            <div class="result-card">
+              <h3>5-Stage</h3>
+              <p>Pipeline with hazard detection and bypassing for structural, data, and control hazards</p>
+            </div>
+            <div class="result-card">
+              <h3>Custom ISA</h3>
+              <p>Supports all standard ALU operations and custom instructions such as modulus division</p>
+            </div>
+            <div class="result-card">
+              <h3>ALU</h3>
+              <p>Includes carry-lookahead adder, modified booth multiplication, non-restoring division</p>
+            </div>
+            <div class="result-card">
+              <h3>25 MHz</h3>
+              <p>Demonstrated clock speed</p>
+            </div>
+          </div>
+        </section>
+    
+        <section class="section">  <!-- class was originally hero-img we think?-->
+          <div>
+            <h2>Results</h2>
+            <p class="projectAbstractText">
+                For the majority of the dubugging and testing of my audio recognition system I used a three second clip of the 
+                Star Wars Cantina Song republished by the University of Illinois. The original graph of this audio file is shown 
+                below left. In this figure, the amplitude of the notes in the audio file are plotted against time on the x axis, 
+                making it easy to visualize individual notes. This file was then parsed using the previously described parsing 
+                function. With an upper threshold at 25% and a lower threshold at 15% of the maximum amplitude, the signal is 
+                separated into distinct notes, illustrated on the right side of figure 2 below.
+            </p>
+            <div class="audio-results-figure-grid">
+
+                <figure class="audio-results-figure">
+                  <img src="originalAudioRead.png" alt="Original audio signal">
+                  <figcaption>
+                    <strong>(a) Original Audio Signal</strong><br>
+                    Raw waveform before note segmentation.
+                  </figcaption>
+                </figure>
+            
+                <figure class="audio-results-figure">
+                  <img src="parsedFile.png" alt="Parsed audio signal">
+                  <figcaption>
+                    <strong>(b) Parsed Audio Signal</strong><br>
+                    Individual note windows after segmentation.
+                  </figcaption>
+                </figure>
+            
+              </div>
+            <!-- BULLET POINTS IN RESULTS
+            <ul>
+              <li>Five-stage instruction pipeline</li>
+              <li>Hazard detection and forwarding</li>
+              <li>Memory-mapped graphics interface</li>
+              <li>VGA timing and pixel generation</li>
+            </ul>
+            -->
+          </div>
+    
+        </section>
+    
+        <section class="section">
+            <h2>Technical Deep Dive</h2>
+          
+            <div class="deep-dive">
+          
+              <!-- BLOCK 1 -->
+          
+              <div class="deep-dive-block">
+          
+                <div class="deep-dive-text">
+                  <h3>Assembly Program</h3>
+
+                  <figure class="wrapped-figure">
+                    <img src="movementRightMIPS.png" alt="Assembly code screenshot" />
+                    <figcaption>
+                      MIPS code for sprite movement right.
+                    </figcaption>
+                  </figure>
+          
+                  <p>
+                    Using MIPS-like assembly instructions, we program each game state and the respective conditions to progress 
+                    between them, and a Python assembler is used to convert this to a binary memory file for our instruction memory. 
+                    The maze generation takes place in the second game state, after the start screen. We used a DFS-backtrace algorithm 
+                    paired with a PRNG xor-shifting function which carves the path through each tile at random. After a random start 
+                    cell is selected, its index gets pushed to a stack, and the algorithm randomly chooses any unvisited neighbor 
+                    to carve a path to. The path is carved by changing the respective directional bit in each tile's data address 
+                    in RAM. This neighbor gets pushed to the stack, and the process continues until no neighbors are available to 
+                    visit for a given tile. This tile then gets popped from the stack and the previous tile is checked for unvisited 
+                    neighbors. The program repeats until it is empty, but keeps track of the highest stack position and that deepest 
+                    cell's “end cell” bit is changed to a 1.
+                  </p>
+                  <p>
+                    The next portion of the program is responsible for handling movement and boundaries. While the user is actively 
+                    playing the game, game state 3, a loop is responsible for interpreting joystick input. Using mask values 1, 2, 4, 
+                    and 8 the loop compares the joystick register to each mask with an AND gate to determine which direction the 
+                    joystick is being pointed. This loop includes a “nop” loop that can be adjusted to change the frequency at which 
+                    joystick conditions are checked. Because the joystick register stores joystick input data in the bottom four bits 
+                    in order, the 1 mask reveals if the up direction is pressed, the 2 mask reveals if the right direction is pressed, 
+                    the 4 mask reveals if the down direction is pressed, and the 8 mask reveals if the left direction is pressed. If 
+                    none of these AND gates retain a valid movement signal in any direction, the loop is repeated until a signal is 
+                    detected. If a direction is pressed, the MIPs jumps to the corresponding direction. Here, the internal x and y 
+                    boundaries for each direction are calculated to determine if movement in that direction is permitted. At this step, 
+                    another AND gate uses another decimal mask to check the corresponding value of the tile register which encodes 
+                    whether or not there is a valid exit in the intended direction, and stores this value in register 12.
+                    If an exit upwards is valid and the sprite is in the middle of the tile, the assembly jumps to 
+                    unconstrained upwards movement. If there is not a valid exit in the up direction, the assembly jumps to the same 
+                    constrained movement applied to the other two vertical thirds. This logic is mimicked for the other three directions, 
+                    with right and left delineating the screen into first vertical thirds and second horizontal, opposite that of up and 
+                    down handling. 
+                  </p>
+                  <p>
+                    Immediately before updating the position register after a valid movement has been permitted in any given direction, 
+                    the assembly code checks if the sprite is at the border of the screen. If the sprite is at the tile border, 
+                    instead of updating the position register by 1 the code loads the corresponding tile address from memory for the 
+                    given border, and updates the sprite's position to opposite the edge it just encountered. For example, if a user 
+                    moved upwards and encountered the top boundary the program would load the tile data for the tile above the one the 
+                    user is currently in, and then set the sprite's y-direction position to the bottom of the screen. This process is 
+                    mirrored in all four directions, allowing users to move from tile to tile by reaching the border of the tile they 
+                    are presently in. 
+                  </p>
+                  <p>
+                    The joystick loop also actively checks whether or not the tile being displayed is an “end” tile, or that the user 
+                    has completed the maze. If a tile is an end tile, a treasure chest appears in the center of the screen. The joystick 
+                    input loop uses a mask value of 16 to isolate the fifth bit of the tile register, where end tile data is encoded, 
+                    and if this bit is valid checks the sprite's position. If the sprite is the center of an end tile, it means the user 
+                    has moved to the chest and won the game. When this is detected, the game state is updated to 4, displaying a screen 
+                    stating “you win” and offering the user the option to play again by pushing the start button. 
+                  </p>
+          
+                  <div class="highlight-box">
+                    <h4>Key Features</h4>
+                    <ul class="feature-list">
+                      <li>DFS-backtrace algorithm</li>
+                      <li>Register-mapped I/O</li>
+                      <li>NOP loop for sprite pacing</li>
+                      <li>Continuous boundary checking</li>
+                    </ul>
+                  </div>
+                </div>
+          
+          
+              </div>
+          
+              <!-- BLOCK 2 -->
+          
+              <div class="deep-dive-block reverse">
+        
+          
+                <div class="deep-dive-text">
+                  <h3>Inputs and Outputs</h3>
+
+                  <figure class="wrapped-figure left">
+                    <img src="350MazeIODiagram.png" alt="I/O circuit diagram" />
+                    <figcaption>
+                      Circuit diagram for pull-down input circuitry.
+                    </figcaption>
+                  </figure>
+          
+                  <p>
+                    <strong>Inputs:</strong> Players progress game state with a button, and move the sprite with a joystick. Both of 
+                    these input devices are connected to the FPGA through a pull-down network to ensure active-low behavior. The button 
+                    and limit switches inside the joystick are each connected within their individual branches in series between a 10 kΩ 
+                    resistor and a constant 3.3V supplied by the FPGA. On the low side of each of these switches, the corresponding FPGA 
+                    input/output pin connects each switch to the FPGA as shown in figure 3. When a switch is toggled, a current through 
+                    the corresponding branch is created sending a logical high signal to the FPGA. Our hardware uses register-mapped I/O: 
+                    register 20 stores the button's state in its least significant bit, while register 27 stores the data for each 
+                    direction in the four least significant bits as up, right, down, and left respectively. These registers are then 
+                    handled in assembly to produce the desired output.
+                  </p>
+          
+                  <p>
+                    <strong>Outputs:</strong> The only output for this project was a VGA display. The project's wrapper module 
+                    connects our VGA controller to important register outputs, making our project register mapped I/O. A few examples 
+                    of these registers are the joystick signals, the X and Y coordinates of our sprite, and the current game state. 
+                    Each of these plays a role in what is displayed on the VGA. A tree of hardware logic determines which background 
+                    should be displayed (based on game state and current tile data) and where the sprite is positioned and the direction 
+                    it faces (based on joystick and coordinate data). The project wrapper's I/O header contains the clock and reset 
+                    inputs for the hardware as a whole, the button and 4-bit joystick input which connect directly to register 
+                    next-states, and the necessary signals for our VGA display as outputs. These include the vertical and horizontal 
+                    edge sync signals, and a 4-bit color signal for each RGB channel.
+                  </p>
+
+          
+                  <div class="highlight-box">
+                    <h4>Key Features</h4>
+                    <ul class="feature-list">
+                      <li>Pull-down input circuitry</li>
+                      <li>Central FPGA power source</li>
+                      <li>Register mapping through I/O header</li>
+                    </ul>
+                  </div>
+                </div>
+
+          
+              </div>
+
+              <!-- BLOCK 3 -->
+          
+              <div class="deep-dive-block">
+          
+                <div class="deep-dive-text">
+                  <h3>Art and Visuals</h3>
+
+                  <figure class="wrapped-figure art">
+                    <img src="350CPUArt.png" alt="Sample chest and tile blocks" />
+                    <figcaption>
+                      Chest and tile blocks made in Photoshop.
+                    </figcaption>
+                  </figure>
+          
+                  <p>
+                    The background and sprite were created in Photoshop as pixel art. The background art is made up of a set of 
+                    tiles that represent the floor, walls, and trim. They could be placed to configure openings in each direction. 
+                    There are 16 generic cell backgrounds, with an additional 4 end cell backgrounds and 3 message displays to direct 
+                    the player. The sprite was designed with the 4 movement directions in mind. There are 4 art variations that 
+                    indicate which direction the player is moving, giving the game a more dynamic feel.
+                  </p>
+          
+                  <div class="highlight-box">
+                    <h4>Key Features</h4>
+                    <ul class="feature-list">
+                      <li>Made in Photoshop</li>
+                      <li>Boundaries align between tiles</li>
+                      <li>Different sprite orientations for each direction</li>
+                    </ul>
+                  </div>
+                </div>
+          
+          
+              </div>
+
+            </div>
+          </section>
+
+          
+          <!-- PHOTO GALLERY -->
+
+
+        <section class="section">
+        <h2>Photo Gallery</h2>
+
+        <div class="gallery">
+
+            <figure class="gallery-item">
+            <img src="mazePic.png" alt="Full VGA setup and display cabinet" />
+            <figcaption>
+                Final FPGA and VGA setup in acrylic cabinet after winning the game.
+            </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+            <img src="GTKwaveSS.png" alt="Simulation waveform" />
+            <figcaption>
+                GTKWave waveform used to debug pipeline hazards and bypassing logic.
+            </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+            <img src="350SpriteRight.png" alt="Sample sprite image" />
+            <figcaption>
+                Art for sprite moving right.
+            </figcaption>
+            </figure>
+
+        </div>
+        </section>
+    
+        <section class="section">
+          <h2>Challenges & Debugging</h2>
+          <p class="projectAbstractText">
+            While we encountered several setbacks throughout the development process, we encountered the most significant challenge 
+            of the project when trying to implement boundaries within each maze tile. While the background art allows individual tiles 
+            to line up with any given neighboring tile to create a maze, the tile transition code does not enforce the sprite to follow 
+            this path. Without boundaries, users could travel from one tile to any given neighboring tile regardless of the maze data 
+            present. To implement boundaries, we started by adding boundaries for each corner. Because every tile lines up, and every 
+            tile is a combination of corners, the sprite would never need to enter the corner sections of any tile. After attempting to 
+            add boundaries through the method described in the assembly section, we realized the boundaries only worked completely in 
+            the up and left directions, and in particular circumstances in the right and down directions. Believing this could be 
+            related to the tile data, we decided to move forward with adaptive boundaries for each tile direction. Again, these adaptive 
+            boundaries worked immediately for the up and left directions and not at all for the right and down directions. Each 
+            direction used the same algorithm and structure to verify the sprite's location and check for boundaries, albeit with 
+            different boundary values, so we did not initially think this was a MIPs issue. After troubleshooting our joystick circuit 
+            with a multimeter, we realized the issue had to be software related. The only difference we noticed between the up and left 
+            direction handling and the right and down direction handling was the structure of branch instructions that checked for a 
+            boundary. In the up and left directions, if the sprite is in a portion of the screen with a constrained movement in that 
+            given direction, a branch-if-less-than instruction compares the boundary, loaded into register 18, against the corresponding 
+            position register for that direction. If the position register is greater than the boundary in these cases, the sprite is 
+            permitted to move. If the position register is less than or equal to register 18 in these cases, then the sprite has reached 
+            a boundary and movement is not permitted. When extrapolated to the down and right directions, this logic was flipped to 
+            account for the x and y directions counting up across the screen from the top left corner. So, in the down and right directions 
+            a branch to movement is taken if the position register value is less than the boundary value, loaded to register 18. While a 
+            simple logical flip, this code did not work as intended and with this iteration of MIPs the down and right boundaries did 
+            not work at all. While we tried numerous strategies to debug this, including rewriting the movement code in a more organized 
+            format, the only change that yielded any results was switching the order of the blt instruction. With this switch, a branch 
+            was taken to movement only if the boundary value in register 18 was less than the position register, which we thought would 
+            isolate the sprite to the bottom and right sections of the screen. Instead, this implemented the boundary behavior we were 
+            looking for, but in the wrong locations. With these boundaries, the sprite was able to follow the maze but was confined to 
+            the left and top portions of every pathway. Believing this looked less professional and was less enjoyable for the user, we 
+            ultimately decided to revert our movement code to exclude down and right boundaries for the final presentation. 
+          </p>
+        </section>
+    
+        <section class="section">
+          <h2>Future Improvements</h2>
+          <ul>
+            <li>Complete movement boundaries</li>
+            <li>Increased maze size</li>
+            <li>Character selection</li>
+            <li>Lights and other cabinet aesthetics</li>
+          </ul>
+        </section>
+    
+      </main>
 
 </body>
 
 
 </html>
+
