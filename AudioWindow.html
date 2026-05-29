@@ -131,33 +131,39 @@
                 function. With an upper threshold at 25% and a lower threshold at 15% of the maximum amplitude, the signal is 
                 separated into distinct notes, illustrated on the right side of figure 2 below.
             </p>
-            <div class="audio-results-figure-grid">
-
-                <figure class="audio-results-figure">
-                  <img src="originalAudioRead.png" alt="Original audio signal">
-                  <figcaption>
-                    <strong>(a) Original Audio Signal</strong><br>
-                    Raw waveform before note segmentation.
-                  </figcaption>
-                </figure>
-            
-                <figure class="audio-results-figure">
-                  <img src="parsedFile.png" alt="Parsed audio signal">
-                  <figcaption>
-                    <strong>(b) Parsed Audio Signal</strong><br>
-                    Individual note windows after segmentation.
-                  </figcaption>
-                </figure>
-            
-              </div>
-            <!-- BULLET POINTS IN RESULTS
-            <ul>
-              <li>Five-stage instruction pipeline</li>
-              <li>Hazard detection and forwarding</li>
-              <li>Memory-mapped graphics interface</li>
-              <li>VGA timing and pixel generation</li>
-            </ul>
-            -->
+            <figure class="audio-results-figure-single">
+                <img src="noteParsingVs.png" alt="Audio note parsing results">
+              
+                <figcaption>
+                  <strong>Figure 1:</strong> Note parsing for input audio signal.
+                </figcaption>
+            </figure> 
+            <p class="projectAbstractText">
+                For this file, my program identified 13 separate windows: twelve distinct notes and an empty edge case window at the 
+                end of the loop. With these windows, I was able to use the MATLAB fft function to calculate the frequency content of 
+                each window. When subplotted with the original audio window, figures similar to those below were generated for every 
+                note.
+            </p>       
+            <figure class="audio-results-figure-single">
+                <img src="TvFreq.png" alt="Audio note parsing results">
+              
+                <figcaption>
+                  <strong>Figure 2:</strong> Time vs. frequency of note windows.
+                </figcaption>
+            </figure>     
+            <p class="projectAbstractText">
+                After storing each window's frequency content, the program identified the dominant frequency (largest magnitude) for 
+                each window and recorded it. Following another band pass filter to remove inaudible noise, the findOctave and findNote 
+                functions labeled the octave and note of each window based on established frequency ranges. The 
+                final output of the program for this three second clip was twelve labeled notes as shown below.
+            </p>  
+            <figure class="audio-results-figure-single" id="audioFig4">
+                <img src="audioFig4.png" alt="Audio note parsing results">
+              
+                <figcaption>
+                  <strong>Figure 3:</strong> Program Output for 3 Second Version of ”Star Wars Cantina Song”.
+                </figcaption>
+            </figure>  
           </div>
     
         </section>
