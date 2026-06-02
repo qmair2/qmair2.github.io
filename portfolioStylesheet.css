@@ -519,14 +519,10 @@ h1 {
 .gallery-item-bridge {
   margin: 0;
   /* background: #f4e3be; */
-  border-radius: 22px;
+  /*border-radius: 22px; */
   overflow: hidden;
 
   transition: transform 0.25s ease;
-}
-
-.gallery-item-bridge:hover {
-  transform: translateY(-6px);
 }
 
 .gallery-item-bridge img {
