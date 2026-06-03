@@ -170,6 +170,7 @@ h5{
   padding: 26px;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 480px;
 }
 
 .projectCard:hover {
@@ -353,7 +354,7 @@ h1 {
 }
 
 .results-imageBridge{     /* Nyakuza bridge results pic */
-  height: 580px;
+  height: 560px;
   width: auto;
   margin-top: 10%;
   border-radius: 18px;
@@ -533,11 +534,11 @@ h1 {
 }
 
 .gallery-item-bridge figcaption {
-  padding: 18px 20px;
+  padding: 10px 20px; 
 
   font-size: 1rem;
   line-height: 1.6;
-  align-items: center;
+  text-align: center;
 
   color: #5a3d06;
 }
