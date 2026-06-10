@@ -710,3 +710,73 @@ h1 {
 
   margin-bottom: 8px;
 }
+
+
+
+
+/* =========================================
+   Additional Work
+========================================= */
+.small-projects-hero {
+  max-width: 900px;
+  margin-bottom: 70px;
+}
+
+.small-projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 34px;
+}
+
+.small-project-card {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 36px;
+  align-items: center;
+
+  background: #f4e3be;
+  border-radius: 26px;
+  padding: 28px;
+
+  text-decoration: none;
+  color: #5a3d06;
+}
+
+.small-project-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+
+.small-project-text h2 {
+  font-size: 2rem;
+  margin: 0 0 12px;
+}
+
+.small-project-text p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.mini-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mini-tags span {
+  background: #efd9aa;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 850px) {
+  .small-project-card {
+    grid-template-columns: 1fr;
+  }
+}
