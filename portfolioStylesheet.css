@@ -19,6 +19,7 @@ body {
   background-color: #f8eace;
   gap: 110vh;  /*gap between items in flexbox*/
   padding: 0 40px;
+  z-index: 1000;
 }
 
 .bannerButtons{
@@ -658,57 +659,58 @@ h1 {
    LBLLC
 ========================================= */
 
-.timeline {
+.project-timeline {
   position: relative;
-
-  margin-top: 50px;
-  margin-left: 30px;
-
-  border-left: 4px solid #dbc7a0;
+  margin-top: 40px;
+  margin-left: 20px;
+  padding-top: 20px;
+  border-left: 3px solid #dbc7a0;
 }
 
-.timeline-item {
+.project-timeline-item {
   position: relative;
-  padding-left: 40px;
-  padding-bottom: 50px;
+  padding-left: 44px;
+  padding-bottom: 38px;
 }
 
-.timeline-dot {
+.project-timeline-dot {
   position: absolute;
-
-  left: -12px;
+  left: -11px;
   top: 6px;
 
-  width: 20px;
-  height: 20px;
-
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
 
   background: #573c08;
   border: 4px solid #dbc7a0;
 }
 
-.timeline-content h3 {
-  margin-top: 0;
-  margin-bottom: 12px;
-
-  color: #573c08;
-  font-size: 1.6rem;
+.project-timeline-content {
+  background: none;
+  padding: 0;
+  max-width: 850px;
 }
 
-.timeline-content p {
+.project-timeline-content h3 {
   margin: 0;
+  font-size: 1.35rem;
+  color: #573c08;
 }
 
-.timeline-date {
-  font-size: 0.9rem;
+.project-timeline-date {
+  margin: 4px 0 10px;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-
   color: #8a6827;
+}
 
-  margin-bottom: 8px;
+.project-timeline-content p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 
