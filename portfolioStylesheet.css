@@ -17,7 +17,7 @@ body {
   align-items: center;     /* centers items vertically */
   height: 10vh;           /* optional, to center items in full view height  or use px for pixels*/
   background-color: #f8eace;
-  gap: 110vh;  /*gap between items in flexbox*/
+  /* gap: 110vh;  gap between items in flexbox*/
   padding: 0 40px;
   z-index: 1000;
 }
