@@ -35,7 +35,7 @@ body {
   color: #000;             /* or white if dark background */
   font-weight: 500;
   position: relative;      /* needed for underline animation */
-  gap: 40vh;  /*gap between items in flexbox*/
+  /* gap: 40vh;  /*gap between items in flexbox*/
 }
 
 .navLink::after {
