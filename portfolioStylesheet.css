@@ -548,6 +548,35 @@ h1 {
 /*End bridge photo gallery*/
 
 
+/* LBLLC photo gallery */
+
+.LBgallery-item {
+  margin: 0;
+  /* background: #f4e3be; */
+  border-radius: 0px;
+  overflow: hidden;
+
+  transition: transform 0.25s ease;
+}
+
+.LBgallery-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  display: block;
+}
+
+.LBgallery-item figcaption {
+  padding: 10px 20px; 
+
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+
+  color: #5a3d06;
+}
+
+
 @media (max-width: 900px) {
   .hero,
   .split {
