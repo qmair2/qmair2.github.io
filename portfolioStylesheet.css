@@ -13,7 +13,7 @@ body {
   display: flex;
   position: sticky; /*sticks when scrolling */
   top: 0; /* Sticks to the top of the viewport when scrolled */
-  justify-content: left; /* centers items horizontally */
+  justify-content: space-between; /* centers items horizontally */
   align-items: center;     /* centers items vertically */
   height: 10vh;           /* optional, to center items in full view height  or use px for pixels*/
   background-color: #f8eace;
