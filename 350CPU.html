@@ -154,7 +154,7 @@
                     </figcaption>
                   </figure>
           
-                  <p>
+                  <p class="techDeepDiveJustify">
                     Using MIPS-like assembly instructions, we program each game state and the respective conditions to progress 
                     between them, and a Python assembler is used to convert this to a binary memory file for our instruction memory. 
                     The maze generation takes place in the second game state, after the start screen. We used a DFS-backtrace algorithm 
@@ -166,7 +166,7 @@
                     neighbors. The program repeats until it is empty, but keeps track of the highest stack position and that deepest 
                     cell's “end cell” bit is changed to a 1.
                   </p>
-                  <p>
+                  <p class="techDeepDiveJustify">
                     The next portion of the program is responsible for handling movement and boundaries. While the user is actively 
                     playing the game, game state 3, a loop is responsible for interpreting joystick input. Using mask values 1, 2, 4, 
                     and 8 the loop compares the joystick register to each mask with an AND gate to determine which direction the 
@@ -185,7 +185,7 @@
                     with right and left delineating the screen into first vertical thirds and second horizontal, opposite that of up and 
                     down handling. 
                   </p>
-                  <p>
+                  <p class="techDeepDiveJustify">
                     Immediately before updating the position register after a valid movement has been permitted in any given direction, 
                     the assembly code checks if the sprite is at the border of the screen. If the sprite is at the tile border, 
                     instead of updating the position register by 1 the code loads the corresponding tile address from memory for the 
@@ -195,7 +195,7 @@
                     mirrored in all four directions, allowing users to move from tile to tile by reaching the border of the tile they 
                     are presently in. 
                   </p>
-                  <p>
+                  <p class="techDeepDiveJustify">
                     The joystick loop also actively checks whether or not the tile being displayed is an “end” tile, or that the user 
                     has completed the maze. If a tile is an end tile, a treasure chest appears in the center of the screen. The joystick 
                     input loop uses a mask value of 16 to isolate the fifth bit of the tile register, where end tile data is encoded, 
@@ -233,7 +233,7 @@
                     </figcaption>
                   </figure>
           
-                  <p>
+                  <p class="techDeepDiveJustify">
                     <strong>Inputs:</strong> Players progress game state with a button, and move the sprite with a joystick. Both of 
                     these input devices are connected to the FPGA through a pull-down network to ensure active-low behavior. The button 
                     and limit switches inside the joystick are each connected within their individual branches in series between a 10 kΩ 
@@ -245,7 +245,7 @@
                     handled in assembly to produce the desired output.
                   </p>
           
-                  <p>
+                  <p class="techDeepDiveJustify">
                     <strong>Outputs:</strong> The only output for this project was a VGA display. The project's wrapper module 
                     connects our VGA controller to important register outputs, making our project register mapped I/O. A few examples 
                     of these registers are the joystick signals, the X and Y coordinates of our sprite, and the current game state. 

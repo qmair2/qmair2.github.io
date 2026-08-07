@@ -366,6 +366,10 @@ h1 {
   border-radius: 18px;
 }
 
+.techDeepDiveJustify{
+  text-align: justify;
+}
+
 .results-imageBridge{     /* Nyakuza bridge results pic */
   height: 560px;
   width: auto;
@@ -479,6 +483,21 @@ h1 {
   max-width: 50%;
   margin: 0 36px 24px 0;
 }
+
+.wrapped2 {          /* Second deep dive for PLC */
+  float: left;
+  width: 40%;
+  height: auto;
+  display: block;
+}
+
+.wrapped3 {          /* Second deep dive for PLC */
+
+  width: 100%;
+
+}
+
+
 
 .wrapped-figure.art{          /* Third deep dive for 350 */
   float: right;
