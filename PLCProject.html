@@ -24,7 +24,7 @@
 
         <section class="hero">
           <div class="hero-text">
-            <p class="eyebrow">Control Systems · SCADA · Human-Machine Interfaces</p>
+            <p class="eyebrow">Automation · Control Systems · Human-Machine Interfaces</p>
             <h1>Pump Station Control System</h1>
             <p class="subtitle">
               An automated control system for a pump station that was designed, programmed, and factory acceptance tested as part of an intern practice project.
@@ -32,6 +32,7 @@
     
             <div class="tags">
               <span>PLC</span>
+              <span>SCADA</span>
               <span>P&ID Drawings</span>
               <span>Indusoft HMI</span>
               <span>Plant 3D</span>
@@ -60,22 +61,37 @@
             <strong>DESIGN</strong>
             <br>
             Using Bluebeam, I drafted process and instrumentation drawings (P&IDs) for each stage of the pump station: finished 
-            water recirculation, chlorine injection, upper distribution, and lower distribution. 
+            water recirculation, chlorine injection, upper distribution, and lower distribution. I used these P&ID drawings to 
+            formulate I/O lists and draft control narratives: written descriptions of automation code.
           </p>
           <p class="projectAbstractText">
             <strong>PLC PROGRAMMING</strong>
             <br>
-            PLC programming
+            Using the control narratives as a guide, I then drafted logical flow diagrams of each automated process, using logic gates, 
+            timers, and math blocks to model each signal and process. With the flow diagrams as a guide, I created 14 ladder logic 
+            programs in Do-more Designer to handle alarms, analog signal scaling, automated plant processes, signal trends, equipment 
+            availability, and pump role control. The most difficult program handled role assignments for the four finished water booster 
+            pumps, which operate with one pump in lead, one in the lag 1 position, one in the lag 2 position, and the final pump in standby. 
+            When called to run, the lead pump's speed is modulated by a PID loop to maintain a operator-adjustable pressure setpoint. If the lead 
+            pump's speed command exceeds a separate operator-adjustable setpoint, the lag 1 pump is automatically called to run. If the speed command 
+            again exceeds the operator-adjustable setpoint, the lag 2 pump is called to run. If any pump becomes unavailable, the standby pump 
+            automatically fills the role of the faulted pump and the faulted pump is assigned the standby role. The pumps can be configured to rotate 
+            roles automatically according to an operater-adjustable setpoint, or can be switched to manual mode to bypass the role selection and 
+            PID loop. 
         </p>
           <p class="projectAbstractText">
             <strong>HMI PROGRAMMING</strong>
             <br>
-            HMI programming
+            After completing the PLC programming, I used Indusoft Web Studio to create an industry-standard human-machine interface (HMI) to display 
+            process information, alarms, trends, and analog information. Operators can change setpoints, monitor levels, shelf and disable alarms, and 
+            view historical data by navigating through the 14 HMI screens. 
           </p>
           <p class="projectAbstractText">
             <strong>FACTORY ACCEPTANCE TESTING</strong>
             <br>
-            Factory Acceptance Testing
+            At the conclusion of the project, I drafted a factory acceptance testing (FAT) document to confirm the functionality of every input, output,
+            and process signal. After confirming their functionality, I presented my test to senior engineers and company leaders from across the HDR 
+            controls business group. 
           </p>
         </section>
     
