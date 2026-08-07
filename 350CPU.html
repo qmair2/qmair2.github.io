@@ -342,50 +342,7 @@
         </div>
         </section>
     
-        <section class="section">
-          <h2>Challenges & Debugging</h2>
-          <p class="projectAbstractText">
-            While we encountered several setbacks throughout the development process, we encountered the most significant challenge 
-            of the project when trying to implement boundaries within each maze tile. While the background art allows individual tiles 
-            to line up with any given neighboring tile to create a maze, the tile transition code does not enforce the sprite to follow 
-            this path. Without boundaries, users could travel from one tile to any given neighboring tile regardless of the maze data 
-            present. To implement boundaries, we started by adding boundaries for each corner. Because every tile lines up, and every 
-            tile is a combination of corners, the sprite would never need to enter the corner sections of any tile. After attempting to 
-            add boundaries through the method described in the assembly section, we realized the boundaries only worked completely in 
-            the up and left directions, and in particular circumstances in the right and down directions. Believing this could be 
-            related to the tile data, we decided to move forward with adaptive boundaries for each tile direction. Again, these adaptive 
-            boundaries worked immediately for the up and left directions and not at all for the right and down directions. Each 
-            direction used the same algorithm and structure to verify the sprite's location and check for boundaries, albeit with 
-            different boundary values, so we did not initially think this was a MIPs issue. After troubleshooting our joystick circuit 
-            with a multimeter, we realized the issue had to be software related. The only difference we noticed between the up and left 
-            direction handling and the right and down direction handling was the structure of branch instructions that checked for a 
-            boundary. In the up and left directions, if the sprite is in a portion of the screen with a constrained movement in that 
-            given direction, a branch-if-less-than instruction compares the boundary, loaded into register 18, against the corresponding 
-            position register for that direction. If the position register is greater than the boundary in these cases, the sprite is 
-            permitted to move. If the position register is less than or equal to register 18 in these cases, then the sprite has reached 
-            a boundary and movement is not permitted. When extrapolated to the down and right directions, this logic was flipped to 
-            account for the x and y directions counting up across the screen from the top left corner. So, in the down and right directions 
-            a branch to movement is taken if the position register value is less than the boundary value, loaded to register 18. While a 
-            simple logical flip, this code did not work as intended and with this iteration of MIPs the down and right boundaries did 
-            not work at all. While we tried numerous strategies to debug this, including rewriting the movement code in a more organized 
-            format, the only change that yielded any results was switching the order of the blt instruction. With this switch, a branch 
-            was taken to movement only if the boundary value in register 18 was less than the position register, which we thought would 
-            isolate the sprite to the bottom and right sections of the screen. Instead, this implemented the boundary behavior we were 
-            looking for, but in the wrong locations. With these boundaries, the sprite was able to follow the maze but was confined to 
-            the left and top portions of every pathway. Believing this looked less professional and was less enjoyable for the user, we 
-            ultimately decided to revert our movement code to exclude down and right boundaries for the final presentation. 
-          </p>
-        </section>
-    
-        <section class="section">
-          <h2>Future Improvements</h2>
-          <ul>
-            <li>Complete movement boundaries</li>
-            <li>Increased maze size</li>
-            <li>Character selection</li>
-            <li>Lights and other cabinet aesthetics</li>
-          </ul>
-        </section>
+
     
       </main>
 
