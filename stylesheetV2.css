@@ -27,7 +27,7 @@ body {
    HEADER
 ------------------------- */
 
-.headerV2 {
+.header {
     width: min(1180px, calc(100% - 80px));
     height: 90px;
 
@@ -40,7 +40,7 @@ body {
     border-bottom: 1px solid var(--v2-line);
 }
 
-.headerV2 h5 {
+.header h5 {
     margin: 0;
 
     font-size: 18px;
@@ -48,7 +48,7 @@ body {
     letter-spacing: -0.02em;
 }
 
-#homepageHeaderV2 {
+#homepageHeader {
     background: transparent;
 }
 
@@ -56,13 +56,13 @@ body {
    NAVIGATION
 ------------------------- */
 
-.bannerButtonsV2 {
+.bannerButtons {
     display: flex;
     align-items: center;
     gap: 34px;
 }
 
-.navLinkV2 {
+.navLink {
     position: relative;
 
     color: var(--v2-text);
@@ -75,7 +75,7 @@ body {
     transition: opacity 0.2s ease;
 }
 
-.navLinkV2::after {
+.navLink::after {
     content: "";
 
     position: absolute;
@@ -90,11 +90,11 @@ body {
     transition: width 0.25s ease;
 }
 
-.navLinkV2:hover::after {
+.navLink:hover::after {
     width: 100%;
 }
 
-.navLinkV2:hover {
+.navLink:hover {
     opacity: 0.7;
 }
 
@@ -121,11 +121,11 @@ body {
    TEXT COLUMN
 ------------------------- */
 
-.panelTextV2 {
+.panelText {
     max-width: 610px;
 }
 
-.pageHeadTextV2 {
+.pageHeadText {
     margin: 0 0 22px;
 
     font-size: clamp(46px, 5.5vw, 78px);
@@ -137,7 +137,7 @@ body {
     color: var(--v2-text);
 }
 
-#aboutMeTitleV2 {
+#aboutMeTitle {
     margin: 0 0 24px;
 
     color: var(--v2-muted);
@@ -151,7 +151,7 @@ body {
     text-transform: uppercase;
 }
 
-#aboutMeTextV2 {
+#aboutMeText {
     max-width: 580px;
 
     margin: 0 0 36px;
@@ -165,7 +165,7 @@ body {
     letter-spacing: -0.005em;
 }
 
-#aboutMeTextV2 strong {
+#aboutMeText strong {
     color: var(--v2-text);
     font-weight: 500;
 }
@@ -174,7 +174,7 @@ body {
    PROJECT BUTTON
 ------------------------- */
 
-.bannerButtonV2 {
+.bannerButton {
     appearance: none;
 
     padding: 14px 22px;
@@ -198,7 +198,7 @@ body {
         transform 0.2s ease;
 }
 
-.bannerButtonV2:hover {
+.bannerButton:hover {
     background: transparent;
     color: var(--v2-text);
     transform: translateY(-2px);
@@ -208,7 +208,7 @@ body {
    IMAGE COLUMN
 ------------------------- */
 
-.panelImageV2 {
+.panelImage {
     position: relative;
 
     width: 100%;
@@ -217,7 +217,7 @@ body {
     justify-self: end;
 }
 
-.image-fixedV2 {
+.image-fixed {
     display: block;
 
     width: 100%;
@@ -231,7 +231,7 @@ body {
 
 /* Small editorial detail beneath image */
 
-/*.panelImageV2::after {
+/*.panelImage::after {
     content: "ENGINEERING · DESIGN · LEADERSHIP";
 
     display: block;
@@ -252,11 +252,11 @@ body {
 
 @media (max-width: 900px) {
 
-    .headerV2 {
+    .header {
         width: min(100% - 48px, 1180px);
     }
 
-    .homepagePanelV2 {
+    .homepagePanel {
         width: min(100% - 48px, 1180px);
 
         grid-template-columns: 1fr;
@@ -265,18 +265,18 @@ body {
         padding: 70px 0;
     }
 
-    .panelTextV2 {
+    .panelText {
         max-width: 700px;
     }
 
-    .panelImageV2 {
+    .panelImage {
         justify-self: start;
 
         width: min(100%, 650px);
         max-width: none;
     }
 
-    .image-fixedV2 {
+    .image-fixed {
         height: min(70vw, 600px);
     }
 }
@@ -287,24 +287,24 @@ body {
 
 @media (max-width: 600px) {
 
-    .headerV2 {
+    .header {
         width: calc(100% - 36px);
         height: 72px;
     }
 
-    .headerV2 h5 {
+    .header h5 {
         font-size: 16px;
     }
 
-    .bannerButtonsV2 {
+    .bannerButtons {
         gap: 18px;
     }
 
-    .navLinkV2 {
+    .navLink {
         font-size: 12px;
     }
 
-    .homepagePanelV2 {
+    .homepagePanel {
         width: calc(100% - 36px);
 
         min-height: auto;
@@ -314,28 +314,1996 @@ body {
         padding: 55px 0 65px;
     }
 
-    .pageHeadTextV2 {
+    .pageHeadText {
         margin-bottom: 18px;
 
         font-size: clamp(44px, 14vw, 62px);
     }
 
-    #aboutMeTitleV2 {
+    #aboutMeTitle {
         margin-bottom: 20px;
     }
 
-    #aboutMeTextV2 {
+    #aboutMeText {
         margin-bottom: 30px;
 
         font-size: 15px;
         line-height: 1.7;
     }
 
-    .image-fixedV2 {
+    .image-fixed {
         height: 110vw;
         max-height: 570px;
     }
 }
 
+/* =========================================================
+   PROJECTS PAGE
+   Matches V2 homepage design
+   Uses existing class + ID names exactly as provided
+   ========================================================= */
 
 
+/* -------------------------
+   PAGE
+   ------------------------- */
+
+   body {
+    margin: 0;
+    background-color: var(--v2-background);
+    color: var(--v2-text);
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* -------------------------
+   HEADER
+   ------------------------- */
+
+.header {
+    width: min(1180px, calc(100% - 80px));
+    height: 90px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--v2-line);
+}
+
+.header h5 {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+#homepageHeader {
+    background: transparent;
+}
+
+.bannerButtons {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+}
+
+.navLink {
+    position: relative;
+
+    color: var(--v2-text);
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+
+    transition: opacity 0.2s ease;
+}
+
+.navLink::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--v2-text);
+
+    transition: width 0.25s ease;
+}
+
+.navLink:hover {
+    opacity: 0.7;
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+
+/* -------------------------
+   PROJECTS PAGE CONTAINER
+   ------------------------- */
+
+   .homepagePanel {
+    width: min(1400px, calc(100% - 80px));
+
+    margin: 0 auto;
+    padding: 85px 0 120px;
+
+    display: block;  /* IMPORTANT: overrides homepage grid */
+
+    min-height: auto;
+    box-sizing: border-box;
+}
+
+.panelText {
+    width: 100%;
+    max-width: none;
+
+}
+
+
+/* -------------------------
+   PAGE TITLE
+   ------------------------- */
+
+#ProjPageHeadText {
+    margin: 0 0 60px;
+
+    font-size: clamp(52px, 6vw, 82px);
+    line-height: 0.95;
+
+    font-weight: 400;
+    letter-spacing: -0.055em;
+
+    color: var(--v2-text);
+}
+
+
+/* -------------------------
+   PROJECT GRID
+   ------------------------- */
+
+.projectGrid {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    column-gap: 28px;
+    row-gap: 65px;
+}
+
+
+/* -------------------------
+   PROJECT CARD
+   ------------------------- */
+
+.projectCard {
+    display: block;
+
+    color: inherit;
+    text-decoration: none;
+
+    min-width: 0;
+}
+
+.projectImageBox {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 16 / 10;
+
+    overflow: hidden;
+
+    background: #ecece8;
+}
+
+.projectImageBox img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.45s ease,
+        filter 0.45s ease;
+}
+
+.projectCard:hover .projectImageBox img {
+    transform: scale(1.025);
+    filter: brightness(0.94);
+}
+
+
+/* -------------------------
+   PROJECT TEXT
+   ------------------------- */
+
+.projectCardText {
+    padding-top: 20px;
+}
+
+.projectCardText h3 {
+    position: relative;
+
+    margin: 0 0 11px;
+    padding-right: 30px;
+
+    font-size: 20px;
+    line-height: 1.3;
+
+    font-weight: 500;
+    letter-spacing: -0.025em;
+
+    color: var(--v2-text);
+}
+
+
+/* subtle arrow indicating the card is clickable */
+
+.projectCardText h3::after {
+    content: "\2197";
+
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    font-size: 16px;
+    font-weight: 300;
+
+    opacity: 0;
+
+    transform: translate(-5px, 5px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.projectCard:hover .projectCardText h3::after {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+
+.projectCardText p {
+    max-width: 500px;
+
+    margin: 0;
+
+    color: var(--v2-muted);
+
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+
+    letter-spacing: -0.005em;
+}
+
+
+/* -------------------------
+   SUBTLE CARD DIVIDER
+   ------------------------- */
+
+.projectCardText::after {
+    content: "";
+
+    display: block;
+
+    width: 100%;
+    height: 1px;
+
+    margin-top: 22px;
+
+    background: var(--v2-line);
+
+    transition: background-color 0.2s ease;
+}
+
+.projectCard:hover .projectCardText::after {
+    background: var(--v2-text);
+}
+
+
+/* -------------------------
+   TABLET
+   ------------------------- */
+
+@media (max-width: 900px) {
+
+    .header {
+        width: min(100% - 48px, 1180px);
+    }
+
+    .homepagePanel {
+        width: min(100% - 48px, 1180px);
+
+        padding: 70px 0 90px;
+    }
+
+    #ProjPageHeadText {
+        margin-bottom: 50px;
+    }
+
+    .projectGrid {
+        column-gap: 28px;
+        row-gap: 55px;
+    }
+
+}
+
+
+/* -------------------------
+   MOBILE
+   ------------------------- */
+
+@media (max-width: 650px) {
+
+    .header {
+        width: calc(100% - 36px);
+        height: 72px;
+    }
+
+    .header h5 {
+        font-size: 16px;
+    }
+
+    .bannerButtons {
+        gap: 18px;
+    }
+
+    .navLink {
+        font-size: 12px;
+    }
+
+    .homepagePanel {
+        width: calc(100% - 36px);
+
+        padding: 55px 0 75px;
+    }
+
+    #ProjPageHeadText {
+        margin-bottom: 42px;
+
+        font-size: clamp(48px, 15vw, 68px);
+    }
+
+    .projectGrid {
+        grid-template-columns: 1fr;
+
+        gap: 52px;
+    }
+
+    .projectCardText {
+        padding-top: 16px;
+    }
+
+    .projectCardText h3 {
+        margin-bottom: 9px;
+
+        font-size: 18px;
+    }
+
+    .projectCardText p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+}
+
+/* =========================================================
+   CONTACT PAGE
+   Matches V2 visual system
+   Scoped so it will not affect other pages
+   ========================================================= */
+
+
+/* -------------------------
+   CONTACT LAYOUT
+   ------------------------- */
+
+   .contact-section {
+    width: min(1180px, calc(100% - 80px));
+    min-height: calc(100vh - 91px);
+
+    margin: 0 auto;
+    padding: 90px 0 120px;
+
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(70px, 10vw, 150px);
+    align-items: start;
+
+    box-sizing: border-box;
+}
+
+
+/* -------------------------
+   CONTACT HEADING
+   ------------------------- */
+
+.contact-text {
+    position: sticky;
+    top: 140px;
+}
+
+.contact-text .eyebrow {
+    margin: 0 0 22px;
+
+    color: var(--v2-muted);
+
+    font-size: 12px;
+    line-height: 1;
+
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.contact-text h1 {
+    margin: 0;
+
+    max-width: 500px;
+
+    color: var(--v2-text);
+
+    font-size: clamp(52px, 6vw, 82px);
+    line-height: 0.98;
+
+    font-weight: 400;
+    letter-spacing: -0.055em;
+}
+
+
+/* -------------------------
+   CONTACT LINKS
+   ------------------------- */
+
+.contact-card {
+    width: 100%;
+
+    margin-top: 9px;
+
+    border-top: 1px solid var(--v2-line);
+}
+
+
+/* Each contact option */
+
+.contact-link {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 110px 1fr 24px;
+    align-items: center;
+    gap: 20px;
+
+    min-height: 105px;
+
+    padding: 0 8px;
+
+    border-bottom: 1px solid var(--v2-line);
+
+    color: var(--v2-text);
+    text-decoration: none;
+
+    box-sizing: border-box;
+
+    transition:
+        padding 0.25s ease,
+        background-color 0.25s ease;
+}
+
+
+/* Small category label */
+
+.contact-link span {
+    color: var(--v2-muted);
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    transition: color 0.25s ease;
+}
+
+
+/* Main contact information */
+
+.contact-link p {
+    margin: 0;
+
+    color: var(--v2-text);
+
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+}
+
+
+/* Arrow */
+
+.contact-link::after {
+    content: "\2197";
+
+    justify-self: end;
+
+    font-size: 17px;
+    font-weight: 300;
+
+    opacity: 0.45;
+
+    transform: translate(-4px, 4px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* -------------------------
+   CONTACT HOVER
+   ------------------------- */
+
+.contact-link:hover {
+    padding-left: 16px;
+    padding-right: 14px;
+
+    background-color: rgba(23, 23, 23, 0.025);
+}
+
+.contact-link:hover span {
+    color: var(--v2-text);
+}
+
+.contact-link:hover::after {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+
+/* -------------------------
+   TABLET
+   ------------------------- */
+
+@media (max-width: 900px) {
+
+    .contact-section {
+        width: min(100% - 48px, 1180px);
+
+        grid-template-columns: 1fr;
+        gap: 65px;
+
+        padding: 70px 0 100px;
+    }
+
+    .contact-text {
+        position: static;
+    }
+
+    .contact-text h1 {
+        max-width: none;
+    }
+
+}
+
+
+/* -------------------------
+   MOBILE
+   ------------------------- */
+
+@media (max-width: 600px) {
+
+    .contact-section {
+        width: calc(100% - 36px);
+
+        min-height: auto;
+
+        gap: 50px;
+
+        padding: 55px 0 75px;
+    }
+
+    .contact-text .eyebrow {
+        margin-bottom: 18px;
+    }
+
+    .contact-text h1 {
+        font-size: clamp(48px, 15vw, 68px);
+    }
+
+    .contact-link {
+        grid-template-columns: 1fr 22px;
+        gap: 8px;
+
+        min-height: 95px;
+
+        padding: 18px 4px;
+    }
+
+    .contact-link span {
+        grid-column: 1;
+
+        margin-bottom: 6px;
+    }
+
+    .contact-link p {
+        grid-column: 1;
+
+        font-size: 15px;
+
+        overflow-wrap: anywhere;
+    }
+
+    .contact-link::after {
+        grid-column: 2;
+        grid-row: 1 / 3;
+
+        align-self: center;
+    }
+
+    .contact-link:hover {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+}
+
+/* =========================================================
+   PROJECT DETAIL PAGE — 32-BIT PROCESSOR / MAZE GAME
+   Matches existing V2 visual system.
+   No class or ID names changed.
+   ========================================================= */
+
+
+/* -------------------------
+   MAIN PROJECT CONTENT
+   ------------------------- */
+
+   main:has(.hero) {
+    width: min(1180px, calc(100% - 80px));
+    margin: 0 auto;
+    padding: 85px 0 120px;
+    box-sizing: border-box;
+}
+
+
+/* -------------------------
+   PROJECT HERO
+   ------------------------- */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(60px, 8vw, 110px);
+    align-items: center;
+
+    padding-bottom: 100px;
+
+    border-bottom: 1px solid var(--v2-line);
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.hero .eyebrow {
+    margin: 0 0 22px;
+
+    color: var(--v2-muted);
+
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    margin: 0 0 28px;
+
+    color: var(--v2-text);
+
+    font-size: clamp(48px, 5.4vw, 76px);
+    font-weight: 400;
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+}
+
+.subtitle {
+    max-width: 580px;
+
+    margin: 0 0 32px;
+
+    color: var(--v2-muted);
+
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.65;
+
+    letter-spacing: -0.01em;
+}
+
+
+/* -------------------------
+   TAGS
+   ------------------------- */
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tags span {
+    padding: 7px 11px;
+
+    border: 1px solid var(--v2-line);
+
+    color: var(--v2-muted);
+
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+
+/* -------------------------
+   HERO IMAGE
+   ------------------------- */
+
+.hero-image {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+
+    background: #ecece8;
+
+    filter: saturate(0.92) contrast(0.98);
+}
+
+
+/* -------------------------
+   GENERAL SECTIONS
+   ------------------------- */
+
+.section {
+    padding: 95px 0;
+
+    border-bottom: 1px solid var(--v2-line);
+}
+
+.section > h2,
+.ThreeFiftyresultsSectionSplit h2 {
+    margin: 0 0 45px;
+
+    color: var(--v2-text);
+
+    font-size: clamp(32px, 3.5vw, 46px);
+    font-weight: 400;
+    line-height: 1.05;
+
+    letter-spacing: -0.045em;
+}
+
+
+/* -------------------------
+   ABSTRACT
+   ------------------------- */
+
+.section:has(.projectAbstractText) > .projectAbstractText {
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.projectAbstractText {
+    margin-top: 0;
+    margin-bottom: 22px;
+
+    color: #424242;
+
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+
+    letter-spacing: -0.005em;
+}
+
+.projectAbstractText:last-child {
+    margin-bottom: 0;
+}
+
+
+/* -------------------------
+   PROCESSOR FEATURES
+   ------------------------- */
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    border-top: 1px solid var(--v2-line);
+    border-bottom: 1px solid var(--v2-line);
+}
+
+.result-card {
+    min-height: 170px;
+
+    padding: 28px 26px;
+
+    border-right: 1px solid var(--v2-line);
+
+    box-sizing: border-box;
+}
+
+.result-card:last-child {
+    border-right: none;
+}
+
+.result-card h3 {
+    margin: 0 0 15px;
+
+    color: var(--v2-text);
+
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.1;
+
+    letter-spacing: -0.035em;
+}
+
+.result-card p {
+    margin: 0;
+
+    color: var(--v2-muted);
+
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+
+/* -------------------------
+   RESULTS — TEXT + IMAGE
+   ------------------------- */
+
+.ThreeFiftyresultsSectionSplit {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: clamp(60px, 8vw, 110px);
+    align-items: start;
+
+    padding: 95px 0;
+
+    border-bottom: 1px solid var(--v2-line);
+}
+
+.ThreeFiftyresultsSectionSplit h2 {
+    margin-bottom: 35px;
+}
+
+.ThreeFiftyresultsSectionSplit .projectAbstractText {
+    max-width: 650px;
+}
+
+.results-image {
+    display: block;
+
+    width: 100%;
+    max-height: 600px;
+
+    object-fit: cover;
+
+    background: #ecece8;
+}
+
+
+/* -------------------------
+   TECHNICAL DEEP DIVE
+   ------------------------- */
+
+.deep-dive {
+    width: 100%;
+}
+
+.deep-dive-block {
+    padding: 70px 0;
+
+    border-top: 1px solid var(--v2-line);
+}
+
+.deep-dive-block:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+
+.deep-dive-block:last-child {
+    padding-bottom: 0;
+}
+
+.deep-dive-text {
+    width: 100%;
+}
+
+.deep-dive-text > h3 {
+    margin: 0 0 35px;
+
+    color: var(--v2-text);
+
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 1.2;
+
+    letter-spacing: -0.035em;
+}
+
+
+/* -------------------------
+   DEEP DIVE BODY TEXT
+   ------------------------- */
+
+.deep-dive-text > p,
+.techDeepDiveJustify {
+    margin-top: 0;
+    margin-bottom: 22px;
+
+    color: #424242;
+
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+
+    letter-spacing: -0.005em;
+
+    text-align: left;
+}
+
+.deep-dive-text > p strong {
+    color: var(--v2-text);
+    font-weight: 500;
+}
+
+
+/* -------------------------
+   WRAPPED TECHNICAL FIGURES
+   ------------------------- */
+
+.wrapped-figure {
+    width: min(43%, 480px);
+
+    margin: 3px 0 28px 42px;
+
+    float: right;
+}
+
+.wrapped-figure.left {
+    float: left;
+
+    margin: 3px 42px 28px 0;
+}
+
+.wrapped-figure.art {
+    width: min(38%, 420px);
+}
+
+.wrapped-figure img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    background: #ecece8;
+}
+
+.wrapped-figure figcaption {
+    margin-top: 10px;
+
+    color: var(--v2-muted);
+
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    letter-spacing: 0.03em;
+}
+
+
+/* Clears floating images at end of each block */
+
+.deep-dive-text::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* -------------------------
+   KEY FEATURES
+   ------------------------- */
+
+.highlight-box {
+    clear: both;
+
+    max-width: 760px;
+
+    margin-top: 42px;
+    padding: 26px 30px;
+
+    border-top: 1px solid var(--v2-text);
+    border-bottom: 1px solid var(--v2-line);
+
+    background: transparent;
+}
+
+.highlight-box h4 {
+    margin: 0 0 18px;
+
+    color: var(--v2-text);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 10px 30px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.feature-list li {
+    position: relative;
+
+    padding-left: 15px;
+
+    color: var(--v2-muted);
+
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.feature-list li::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: var(--v2-text);
+}
+
+
+/* -------------------------
+   PHOTO GALLERY
+   ------------------------- */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+}
+
+.gallery-item {
+    margin: 0;
+}
+
+.gallery-item img {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+
+    background: #ecece8;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.gallery-item:hover img {
+    transform: translateY(-3px);
+    filter: brightness(0.96);
+}
+
+.gallery-item figcaption {
+    max-width: 95%;
+
+    margin-top: 12px;
+
+    color: var(--v2-muted);
+
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+
+/* -------------------------
+   TABLET
+   ------------------------- */
+
+@media (max-width: 900px) {
+
+    main:has(.hero) {
+        width: min(100% - 48px, 1180px);
+        padding: 70px 0 100px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 50px;
+
+        padding-bottom: 75px;
+    }
+
+    .hero-text {
+        max-width: 750px;
+    }
+
+    .hero-image {
+        max-width: 700px;
+    }
+
+    .section {
+        padding: 75px 0;
+    }
+
+    .section:has(.projectAbstractText) > .projectAbstractText {
+        max-width: 750px;
+        margin-left: 0;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .result-card:nth-child(2) {
+        border-right: none;
+    }
+
+    .result-card:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--v2-line);
+    }
+
+    .ThreeFiftyresultsSectionSplit {
+        grid-template-columns: 1fr;
+        gap: 45px;
+
+        padding: 75px 0;
+    }
+
+    .results-image {
+        width: min(100%, 700px);
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* -------------------------
+   MOBILE
+   ------------------------- */
+
+@media (max-width: 600px) {
+
+    main:has(.hero) {
+        width: calc(100% - 36px);
+        padding: 55px 0 75px;
+    }
+
+    .hero {
+        gap: 38px;
+
+        padding-bottom: 60px;
+    }
+
+    .hero h1 {
+        font-size: clamp(43px, 13vw, 60px);
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .section > h2,
+    .ThreeFiftyresultsSectionSplit h2 {
+        margin-bottom: 32px;
+
+        font-size: 34px;
+    }
+
+    .projectAbstractText,
+    .deep-dive-text > p,
+    .techDeepDiveJustify {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-card {
+        min-height: auto;
+
+        padding: 24px 4px;
+
+        border-right: none;
+        border-bottom: 1px solid var(--v2-line);
+    }
+
+    .result-card:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--v2-line);
+    }
+
+    .result-card:last-child {
+        border-bottom: none;
+    }
+
+    .ThreeFiftyresultsSectionSplit {
+        gap: 35px;
+
+        padding: 60px 0;
+    }
+
+    .deep-dive-block {
+        padding: 55px 0;
+    }
+
+    .deep-dive-text > h3 {
+        margin-bottom: 28px;
+
+        font-size: 24px;
+    }
+
+    .wrapped-figure,
+    .wrapped-figure.left,
+    .wrapped-figure.art {
+        float: none;
+
+        width: 100%;
+
+        margin: 0 0 28px;
+    }
+
+    .highlight-box {
+        margin-top: 35px;
+
+        padding: 22px 0;
+    }
+
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+}
+
+/* =========================================================
+   PUMP STATION PROJECT
+   Additional styles only
+   ========================================================= */
+
+
+/* -------------------------
+   RUNTIME ALARM FIGURE
+   ------------------------- */
+
+   .wrapped2 {
+    width: min(43%, 480px);
+
+    margin: 3px 0 28px 42px;
+
+    float: right;
+}
+
+.wrapped2 img,
+.wrapped3 {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    background: #ecece8;
+}
+
+.wrapped2 figcaption {
+    margin-top: 10px;
+
+    color: var(--v2-muted);
+
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    letter-spacing: 0.03em;
+}
+
+
+/* -------------------------
+   MOBILE
+   ------------------------- */
+
+@media (max-width: 600px) {
+
+    .wrapped2 {
+        float: none;
+
+        width: 100%;
+
+        margin: 0 0 28px;
+    }
+
+}
+
+/* =========================================================
+   NYAKUZA BRIDGE PROJECT
+   Additional styles only
+   ========================================================= */
+
+
+/* -------------------------
+   RESULTS IMAGE
+   ------------------------- */
+
+   .results-imageBridge {
+    display: block;
+
+    width: 100%;
+    max-height: 620px;
+
+    object-fit: cover;
+    object-position: center;
+
+    background: #ecece8;
+
+    filter: saturate(0.92) contrast(0.98);
+}
+
+
+/* -------------------------
+   BRIDGE GALLERY
+   ------------------------- */
+
+.gallery-item-bridge {
+    margin: 0;
+}
+
+.gallery-item-bridge img {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+
+    background: #ecece8;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.gallery-item-bridge:hover img {
+    transform: translateY(-3px);
+    filter: brightness(0.96);
+}
+
+.gallery-item-bridge figcaption {
+    max-width: 95%;
+
+    margin-top: 12px;
+
+    color: var(--v2-muted);
+
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+
+/* -------------------------
+   MOBILE
+   ------------------------- */
+
+@media (max-width: 600px) {
+
+    .results-imageBridge {
+        max-height: none;
+    }
+
+}
+
+/* -------------------------
+   AUDIO PROCESS LIST
+   ------------------------- */
+
+   .audioUL {
+    max-width: 820px;
+
+    margin: 30px 0 40px auto;
+    padding: 0;
+
+    list-style: none;
+
+    color: #424242;
+
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.75;
+
+    counter-reset: audio-step;
+}
+
+.audioUL li {
+    position: relative;
+
+    margin: 0;
+    padding: 18px 0 18px 48px;
+
+    border-top: 1px solid var(--v2-line);
+
+    counter-increment: audio-step;
+}
+
+.audioUL li:last-child {
+    border-bottom: 1px solid var(--v2-line);
+}
+
+.audioUL li::before {
+    content: counter(audio-step, decimal-leading-zero);
+
+    position: absolute;
+    left: 0;
+    top: 20px;
+
+    color: var(--v2-muted);
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+
+/* -------------------------
+   MOBILE
+   ------------------------- */
+
+@media (max-width: 600px) {
+
+    .audioUL {
+        margin: 25px 0 35px;
+
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .audioUL li {
+        padding: 16px 0 16px 38px;
+    }
+
+    .audioUL li::before {
+        top: 18px;
+    }
+
+}
+
+/* =========================================================
+   LUNCH BUNCH PROJECT
+   Additional styles only
+   ========================================================= */
+
+/* =========================================================
+   LUNCH BUNCH GALLERY
+   ========================================================= */
+
+   .LBgallery-item {
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.LBgallery-item img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+    object-position: center;
+
+    background: #ecece8;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.LBgallery-item:hover img {
+    transform: translateY(-3px);
+    filter: brightness(0.96);
+}
+
+.LBgallery-item figcaption {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 12px 0 0;
+
+    color: var(--v2-muted);
+
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+
+/* Make absolutely sure the shared gallery
+   distributes all three columns evenly */
+
+.gallery:has(.LBgallery-item) {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+}
+
+
+/* -------------------------
+   MOBILE
+   ------------------------- */
+
+@media (max-width: 700px) {
+
+    .gallery:has(.LBgallery-item) {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+}
+/* -------------------------
+   PROJECT TIMELINE
+   ------------------------- */
+
+/* =========================================================
+   PROJECT TIMELINE — MILESTONE GRID
+   ========================================================= */
+
+   .project-timeline {
+    width: 100%;
+    max-width: none;
+
+    margin: 10px 0 0;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    column-gap: 70px;
+    row-gap: 0;
+}
+
+
+/* Remove old vertical timeline */
+
+.project-timeline::before {
+    display: none;
+}
+
+
+/* -------------------------
+   TIMELINE ITEM
+   ------------------------- */
+
+.project-timeline-item {
+    position: relative;
+
+    display: block;
+
+    padding: 30px 0 38px;
+
+    border-top: 1px solid var(--v2-line);
+}
+
+
+/* Number each milestone */
+
+.project-timeline {
+    counter-reset: milestone;
+}
+
+.project-timeline-item {
+    counter-increment: milestone;
+}
+
+.project-timeline-item::before {
+    content: counter(milestone, decimal-leading-zero);
+
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    color: #a0a09a;
+
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+
+/* Get rid of old timeline dots */
+
+.project-timeline-dot {
+    display: none;
+}
+
+
+/* -------------------------
+   DATE
+   ------------------------- */
+
+.project-timeline-date {
+    margin: 0 0 13px;
+
+    color: var(--v2-muted);
+
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+/* -------------------------
+   CONTENT
+   ------------------------- */
+
+.project-timeline-content {
+    padding: 0;
+}
+
+.project-timeline-content h3 {
+    max-width: 85%;
+
+    margin: 0 0 13px;
+
+    color: var(--v2-text);
+
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.25;
+
+    letter-spacing: -0.03em;
+}
+
+.project-timeline-content > p:not(.project-timeline-date) {
+    max-width: 500px;
+
+    margin: 0;
+
+    color: var(--v2-muted);
+
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+}
+
+
+/* -------------------------
+   LAST ODD ITEM
+   ------------------------- */
+
+/* Your seventh milestone spans the full width */
+
+.project-timeline-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+
+.project-timeline-item:last-child:nth-child(odd)
+.project-timeline-content > p:not(.project-timeline-date) {
+    max-width: 650px;
+}
+
+
+/* -------------------------
+   SUBTLE HOVER
+   ------------------------- */
+
+.project-timeline-item {
+    transition: padding-left 0.25s ease;
+}
+
+.project-timeline-item:hover {
+    padding-left: 8px;
+}
+
+
+/* -------------------------
+   MOBILE
+   ------------------------- */
+
+@media (max-width: 700px) {
+
+    .project-timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .project-timeline-item {
+        padding: 26px 0 32px;
+    }
+
+    .project-timeline-item:last-child:nth-child(odd) {
+        grid-column: auto;
+    }
+
+    .project-timeline-item::before {
+        top: 26px;
+    }
+
+    .project-timeline-content h3 {
+        font-size: 19px;
+    }
+
+}
+
+/* =========================================================
+   ADDITIONAL WORK PAGE
+   ========================================================= */
+
+
+/* -------------------------
+   PAGE CONTAINER
+   ------------------------- */
+
+   main:has(.small-projects-hero) {
+    width: min(1180px, calc(100% - 80px));
+
+    margin: 0 auto;
+    padding: 85px 0 120px;
+
+    box-sizing: border-box;
+}
+
+
+/* -------------------------
+   PAGE HERO
+   ------------------------- */
+
+.small-projects-hero {
+    padding: 0 0 65px;
+}
+
+.small-projects-hero h1 {
+    margin: 0;
+
+    color: var(--v2-text);
+
+    font-size: clamp(52px, 6vw, 82px);
+    font-weight: 400;
+    line-height: 0.95;
+
+    letter-spacing: -0.055em;
+}
+
+
+/* -------------------------
+   PROJECT GRID
+   ------------------------- */
+
+.small-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    column-gap: 38px;
+    row-gap: 65px;
+}
+
+
+/* -------------------------
+   PROJECT CARD
+   ------------------------- */
+
+.small-project-card {
+    min-width: 0;
+
+    border-top: 1px solid var(--v2-line);
+
+    padding-top: 20px;
+}
+
+.small-project-card > img {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    object-fit: cover;
+
+    background: #ecece8;
+
+    margin-bottom: 20px;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.small-project-card:hover > img {
+    transform: translateY(-3px);
+    filter: brightness(0.96);
+}
+
+
+/* -------------------------
+   PROJECT TEXT
+   ------------------------- */
+
+.small-project-text h2 {
+    margin: 0 0 9px;
+
+    color: var(--v2-text);
+
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.25;
+
+    letter-spacing: -0.03em;
+}
+
+.small-project-text > p {
+    max-width: 500px;
+
+    margin: 0 0 18px;
+
+    color: var(--v2-muted);
+
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+
+/* -------------------------
+   MINI TAGS
+   ------------------------- */
+
+.mini-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+.mini-tags span {
+    padding: 6px 9px;
+
+    border: 1px solid var(--v2-line);
+
+    color: var(--v2-muted);
+
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+
+/* -------------------------
+   TABLET
+   ------------------------- */
+
+@media (max-width: 900px) {
+
+    main:has(.small-projects-hero) {
+        width: min(100% - 48px, 1180px);
+
+        padding: 70px 0 100px;
+    }
+
+    .small-projects-hero {
+        padding-bottom: 55px;
+    }
+
+    .small-projects-grid {
+        column-gap: 28px;
+        row-gap: 55px;
+    }
+
+}
+
+
+/* -------------------------
+   MOBILE
+   ------------------------- */
+
+@media (max-width: 600px) {
+
+    main:has(.small-projects-hero) {
+        width: calc(100% - 36px);
+
+        padding: 55px 0 75px;
+    }
+
+    .small-projects-hero {
+        padding-bottom: 45px;
+    }
+
+    .small-projects-hero h1 {
+        font-size: clamp(48px, 15vw, 68px);
+    }
+
+    .small-projects-grid {
+        grid-template-columns: 1fr;
+
+        row-gap: 48px;
+    }
+
+    .small-project-card {
+        padding-top: 16px;
+    }
+
+    .small-project-card > img {
+        margin-bottom: 17px;
+    }
+
+    .small-project-text h2 {
+        font-size: 19px;
+    }
+
+}

@@ -4,7 +4,7 @@
 
 <head>
     <title>quinnmair.com</title>
-    <link rel="stylesheet" href="portfolioStylesheet.css"> 
+    <link rel="stylesheet" href="stylesheetV2.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="HDRHeadshot.jpg">
 </head>
@@ -56,7 +56,8 @@
             dominant frequency to identify a corresponding music note. Throughout the program, I added graphing functions 
             to troubleshoot individual functions and better visualize the audio recognition process. This code uses the 
             audioread command to get an array of samples at a standard sample rate, then uses these samples in the following process:
-            <ul>
+          </p>
+            <ul class="audioUL">
                 <li>Graph original audio file using the MATLAB plot function.</li>
                 <li>Parse file into individual notes: A pointer is used to iterate through the length of the audio file, 
                     flagging sections that are above an upper threshold as a note and below a lower threshold as a gap between 
@@ -82,16 +83,15 @@
                 <li>Using a wrapper function, the note value and octave of each window are displayed in the command window.</li>
 
               </ul>
-          </p>
           <p class="projectAbstractText">
             A basic overview of the process is outlined in the block diagram below:
+          </p>
             <figure class="audioProcessFigure">
                 <img src="audioWProcess.png" alt="Assembly code screenshot" />
                 <figcaption>
                   Algorithm Overview
                 </figcaption>
               </figure>
-          </p>          
         </section>
     
     
