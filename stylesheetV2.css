@@ -1,0 +1,341 @@
+/*=======================================================*/
+/* INDEX */
+/*=======================================================*/
+
+:root {
+    --v2-background: #f7f7f4;
+    --v2-surface: #ffffff;
+    --v2-text: #171717;
+    --v2-muted: #686868;
+    --v2-line: #d9d9d4;
+    --v2-accent: #263b32;
+}
+
+/* -------------------------
+   PAGE
+------------------------- */
+
+body {
+    margin: 0;
+    background-color: var(--v2-background);
+    color: var(--v2-text);
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* -------------------------
+   HEADER
+------------------------- */
+
+.headerV2 {
+    width: min(1180px, calc(100% - 80px));
+    height: 90px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--v2-line);
+}
+
+.headerV2 h5 {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+#homepageHeaderV2 {
+    background: transparent;
+}
+
+/* -------------------------
+   NAVIGATION
+------------------------- */
+
+.bannerButtonsV2 {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+}
+
+.navLinkV2 {
+    position: relative;
+
+    color: var(--v2-text);
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+
+    transition: opacity 0.2s ease;
+}
+
+.navLinkV2::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--v2-text);
+
+    transition: width 0.25s ease;
+}
+
+.navLinkV2:hover::after {
+    width: 100%;
+}
+
+.navLinkV2:hover {
+    opacity: 0.7;
+}
+
+/* -------------------------
+   HOMEPAGE HERO / ABOUT
+------------------------- */
+
+.homepagePanelV2 {
+    width: min(1180px, calc(100% - 80px));
+    min-height: calc(100vh - 91px);
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(60px, 8vw, 120px);
+    align-items: center;
+
+    padding: 70px 0 90px;
+    box-sizing: border-box;
+}
+
+/* -------------------------
+   TEXT COLUMN
+------------------------- */
+
+.panelTextV2 {
+    max-width: 610px;
+}
+
+.pageHeadTextV2 {
+    margin: 0 0 22px;
+
+    font-size: clamp(46px, 5.5vw, 78px);
+    line-height: 0.98;
+
+    font-weight: 400;
+    letter-spacing: -0.055em;
+
+    color: var(--v2-text);
+}
+
+#aboutMeTitleV2 {
+    margin: 0 0 24px;
+
+    color: var(--v2-muted);
+
+    font-size: 12px;
+    line-height: 1;
+
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+#aboutMeTextV2 {
+    max-width: 580px;
+
+    margin: 0 0 36px;
+
+    color: #424242;
+
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.75;
+
+    letter-spacing: -0.005em;
+}
+
+#aboutMeTextV2 strong {
+    color: var(--v2-text);
+    font-weight: 500;
+}
+
+/* -------------------------
+   PROJECT BUTTON
+------------------------- */
+
+.bannerButtonV2 {
+    appearance: none;
+
+    padding: 14px 22px;
+
+    border: 1px solid var(--v2-text);
+    border-radius: 0;
+
+    background: var(--v2-text);
+    color: var(--v2-surface);
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.bannerButtonV2:hover {
+    background: transparent;
+    color: var(--v2-text);
+    transform: translateY(-2px);
+}
+
+/* -------------------------
+   IMAGE COLUMN
+------------------------- */
+
+.panelImageV2 {
+    position: relative;
+
+    width: 100%;
+    max-width: 500px;
+
+    justify-self: end;
+}
+
+.image-fixedV2 {
+    display: block;
+
+    width: 100%;
+    height: min(65vh, 650px);
+
+    object-fit: cover;
+    object-position: center;
+
+    filter: saturate(0.88) contrast(0.98);
+}
+
+/* Small editorial detail beneath image */
+
+/*.panelImageV2::after {
+    content: "ENGINEERING · DESIGN · LEADERSHIP";
+
+    display: block;
+
+    margin-top: 13px;
+
+    color: var(--v2-muted);
+
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+}
+*/
+
+/* -------------------------
+   TABLET
+------------------------- */
+
+@media (max-width: 900px) {
+
+    .headerV2 {
+        width: min(100% - 48px, 1180px);
+    }
+
+    .homepagePanelV2 {
+        width: min(100% - 48px, 1180px);
+
+        grid-template-columns: 1fr;
+        gap: 55px;
+
+        padding: 70px 0;
+    }
+
+    .panelTextV2 {
+        max-width: 700px;
+    }
+
+    .panelImageV2 {
+        justify-self: start;
+
+        width: min(100%, 650px);
+        max-width: none;
+    }
+
+    .image-fixedV2 {
+        height: min(70vw, 600px);
+    }
+}
+
+/* -------------------------
+   MOBILE
+------------------------- */
+
+@media (max-width: 600px) {
+
+    .headerV2 {
+        width: calc(100% - 36px);
+        height: 72px;
+    }
+
+    .headerV2 h5 {
+        font-size: 16px;
+    }
+
+    .bannerButtonsV2 {
+        gap: 18px;
+    }
+
+    .navLinkV2 {
+        font-size: 12px;
+    }
+
+    .homepagePanelV2 {
+        width: calc(100% - 36px);
+
+        min-height: auto;
+
+        gap: 45px;
+
+        padding: 55px 0 65px;
+    }
+
+    .pageHeadTextV2 {
+        margin-bottom: 18px;
+
+        font-size: clamp(44px, 14vw, 62px);
+    }
+
+    #aboutMeTitleV2 {
+        margin-bottom: 20px;
+    }
+
+    #aboutMeTextV2 {
+        margin-bottom: 30px;
+
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .image-fixedV2 {
+        height: 110vw;
+        max-height: 570px;
+    }
+}
+
+
+
