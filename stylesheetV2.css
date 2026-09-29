@@ -338,6 +338,32 @@ body {
     }
 }
 
+@media (max-width: 600px) {
+    .homepagePanelV2 {
+      min-height: 0 !important;
+      height: auto !important;
+      padding-top: 20px !important;
+      padding-bottom: 40px !important;
+      margin-top: 0 !important;
+  
+      display: block !important;
+    }
+  
+    .panelText {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+  
+    .panelImage {
+      margin-top: 20px !important;
+    }
+  
+    main {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+  }
+
 /* =========================================================
    PROJECTS PAGE
    Matches V2 homepage design
