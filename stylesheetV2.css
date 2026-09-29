@@ -256,7 +256,7 @@ body {
         width: min(100% - 48px, 1180px);
     }
 
-    .homepagePanel {
+    .homepagePanelV2 {
         width: min(100% - 48px, 1180px);
 
         grid-template-columns: 1fr;
@@ -312,6 +312,7 @@ body {
         gap: 45px;
 
         padding: 55px 0 65px;
+        grid-template-columns: 1fr;
     }
 
     .pageHeadText {
