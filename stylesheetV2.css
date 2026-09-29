@@ -304,12 +304,12 @@ body {
         font-size: 12px;
     }
 
-    .homepagePanel {
+    .homepagePanelV2 {
         width: calc(100% - 36px);
 
         min-height: auto;
 
-        gap: 5px;
+        gap: 45px;
 
         padding: 55px 0 65px;
     }
